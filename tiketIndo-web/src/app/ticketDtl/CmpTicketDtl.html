@@ -1,0 +1,118 @@
+<div class="ribbon">
+	<div class="page-title">Ticket Detail</div>
+</div>
+<div class="card mb-3">
+	<div class="card-header" (click)="expandCollapse('#pnlBody')">{{'search.criteria' | translate}} <span *ngIf="searchLabel" class="search-cue">{{searchLabel}}</span>
+		<div class="float-right">
+			<a title="{{'help' | translate}}" routerLink="/home/help" class="mr-2">
+				<i class="icon-question-circle-o"></i>
+			</a>
+			<a role="button" data-toggle="collapse" href="#pnlBody" aria-expanded="false" aria-controls="collapseExample">
+				<i class="fa toggle-expand"></i>
+			</a>
+		</div>
+	</div>
+	<div class="card-body collapse show" id="pnlBody">
+		<div >
+
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.buyerName.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.buyerName.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.noKtp.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.noKtp.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+			<div *ngIf="lstEvent" class="form-group row">
+				<label class="col-sm-2 col-form-label">Pilih Event</label>
+				<div class="col-sm-4">
+					<select class="form-control" [(ngModel)]="criteria.venueId.value" name="eventId">
+						<option *ngFor="let event of lstEvent" [value]="event.id">{{event.nama}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Penjualan</label>
+				<div class="col-sm-4">
+					<select class="form-control" [(ngModel)]="penjualan" name="penjualan" (change)="change()">
+						<option value=""></option>
+						<option value="web">Via Web</option>
+						<option value="app">Via App</option>
+					</select>
+				</div>
+			</div>
+			<div *ngIf="penjualan=='app'" class="form-group row">
+				<label class="col-sm-2 col-form-label">Pilih Reseller</label>
+				<div class="col-sm-4">
+					<select class="form-control" [(ngModel)]="criteria.resellerId.value" name="resellerId">
+						<option></option>
+						<option *ngFor="let seller of lstSeller" [value]="seller.id">{{seller.username}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row mb-0">
+				<div class="col-sm-2 offset-sm-2">
+					<button (click)="reloadFirstPage()" type="button" class="btn btn-default"><i class="fa fa-search"></i> {{'search' | translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="tableData" class="card">
+	<div class="card-header">
+		<p-table-helper #tableHelper
+							 [srvMasterData]="srvMasterData"
+							 [table]="myTable" 
+							 (sort)="onSort($event)" [templateKey]="prefix" 
+							 [rows]="tableData.rows"></p-table-helper>
+		{{'search.result' | translate}}
+		<div class="float-right">
+			<div class="btn-group p-pagination mr-1" *ngIf="canMaintain">
+				<button title="{{'VERIFIED' | translate}}" type="button" class="btn btn-default btn-sm text-success" (click)="verify('VERIFIED')" [disabled]="noRowSelected">VERIFIED</button>
+				<button title="{{'CANCEL' | translate}}" type="button" class="btn btn-default btn-sm text-danger" (click)="verify('CANCEL')" [disabled]="noRowSelected">CANCEL</button>
+			</div>
+			<div class="btn-group p-pagination mr-1" *ngIf="isAdmin">
+				<a title="{{'export' | translate}}" class="btn btn-default btn-sm mr-1" (click)="exportData()"><i class="icon-file-excel"></i>Export</a>
+				<a title="{{'Export All' | translate}}" class="btn btn-default btn-sm mr-1" (click)="exportAllData()"><i class="icon-file-excel"></i>Export All</a>
+			</div>
+			<p-pagination [paginationObject]="paginationObject" (reload)="reload()" class="ml1"></p-pagination>
+		</div>
+	</div>
+	<div class="card-body">
+		<ngx-datatable #myTable class="material" [style.height]="tableHeight"
+							[reorderable]="false"
+							[scrollbarV]="true"
+							[scrollbarH]="true"
+							[selected]="selected"
+							[rowClass]="getRowClass"
+							[selectionType]="'single'"
+							(select)="onSelect($event)"
+							[externalSorting]="true">
+			<ngx-datatable-column prop="{{'number' | translate}}" [sortable]="false">
+				<ng-template let-rowIndex='rowIndex' ngx-datatable-cell-template>
+					{{rowIndex + 1 + paginationObject.startIndex}}
+				</ng-template>
+			</ngx-datatable-column>
+			<ngx-datatable-column prop="buyerName" name="Nama"></ngx-datatable-column>
+			<ngx-datatable-column prop="noKtp" name="Nomor ID"></ngx-datatable-column>
+			<ngx-datatable-column prop="phone" name="Nomor HP"></ngx-datatable-column>
+			<ngx-datatable-column prop="umur" name="Umur"></ngx-datatable-column>
+			<ngx-datatable-column prop="kotaAsal" name="Kota Asal"></ngx-datatable-column>
+			<ngx-datatable-column prop="buyerEmail" name="Email"></ngx-datatable-column>
+			<ngx-datatable-column prop="type" name="Tipe" [sortable]="false"></ngx-datatable-column>
+			<ngx-datatable-column prop="qty" name="QTY" [sortable]="false"></ngx-datatable-column>
+			<ngx-datatable-column prop="status" name="Status"></ngx-datatable-column>
+			<ngx-datatable-column prop="modifiedDate" name="Modified Date">
+				<ng-template let-value="value" ngx-datatable-cell-template>
+					{{value | date:'yyyy-MM-dd'}}
+				</ng-template>
+			</ngx-datatable-column>
+			<ngx-datatable-column prop="modifiedBy" name="Modified By"></ngx-datatable-column>
+			<ngx-datatable-column prop="verifier" name="Verifier"></ngx-datatable-column>
+		</ngx-datatable>
+	</div>
+</div>

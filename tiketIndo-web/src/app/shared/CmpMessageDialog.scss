@@ -1,0 +1,21 @@
+.mat-dialog-content {
+	display: flex;
+	align-items: center;
+	
+	p {
+		margin : 0 0 0 20px;
+	}
+
+	i {
+		font-size: 2rem;
+	}
+}
+
+
+.mat-dialog-actions {
+    justify-content: flex-end;
+}
+
+/*:host {
+	color: grey;
+}*/

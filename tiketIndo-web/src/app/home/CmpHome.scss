@@ -1,0 +1,174 @@
+$header_height:51px;
+$sidemenu_width:210px;
+
+#pnlBackground {
+	/*background: url(/assets/bg4.jpg);*/
+	background: #5d5dff;
+	background-size: 100%;
+	position: fixed;
+	z-index: 0;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+nav.navbar {
+	position: fixed;
+	/*background: url(/assets/bg4.jpg);*/
+	background: #5d5dff;
+	background-size: 100%;
+	top:0;
+	width: 100%;
+	z-index: 1000;
+	/*padding:0*/
+}
+
+.sidebar {
+	font-size: 1rem;
+	position:fixed;
+	left:0;
+	width: $sidemenu_width;
+	overflow-y: auto;
+	height: calc(100vh - #{$header_height} - 40px);
+	z-index: 100;
+}
+
+.sidebar.toggled {
+	overflow: visible;
+	width: 50px !important;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+	background-color:white;
+}
+
+#page-wrapper {
+	position:relative;
+	margin-left: $sidemenu_width;
+	background-color: white;
+	padding: 1rem;
+	padding-top: 0;
+}
+
+.sidebar-toggled #page-wrapper {
+	margin-left: 50px;
+}
+
+.menu-kategori-0::after {
+	content: '\f0c0';
+}
+
+.menu-kategori-1::after {
+	content: '\f1c0';
+}
+
+.menu-kategori-2::after {
+	content: "\f2c3";
+}
+
+#home-root {
+	padding-top: $header_height;
+}
+
+.sidebar li a {
+	color: #fff;
+	text-shadow: 0 1px 1px #000;
+
+	&.active {
+		background-color: yellowgreen;
+	}
+}
+
+.sidebar li.dropdown > a::after {
+	font-family:'Fontello';
+	content: '\f105';
+	float: right;
+}
+
+.sidebar li.dropdown > a.collapsed::after {
+	content: '\f107';
+}
+
+.sidebar .dropdown-item:hover, .sidebar .dropdown-item:focus {
+	background-color: rgba(255,255,255,0.1);
+}
+
+.dropdown-item .nav-link {
+	padding:0;
+}
+.sidebar.toggled li {
+	position: relative;
+}
+.sidebar.toggled li >a .sidebar-label {
+	display:none;
+}
+.sidebar.toggled li:hover>ul, .sidebar.toggled li:hover>a .sidebar-label {
+	display: block!important;
+	position: absolute;
+	left: 49px;
+	/*top:0;*/
+	width: $sidemenu_width;
+	min-width: $sidemenu_width;
+	background-color: #5d5dff;
+	z-index: 110;
+}
+.sidebar.toggled li:hover>ul {
+	top: 39px;
+}
+.sidebar.toggled li:hover>a .sidebar-label {
+	top: 0;
+	line-height: 40px;
+	padding-left: 0.5rem;
+	background-color: #4d4ddf;
+}
+
+.slim-loading-bar {
+	position: fixed;
+	margin: 0;
+	padding: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+}
+
+/* Styling for the Slim Loading Progress Bar itself */
+.slim-loading-bar-progress {
+	margin: 0;
+	padding: 0;
+	z-index: 99998;
+	background-color: firebrick;
+	/*background-color: #52aebc;*/
+	color: firebrick;
+	box-shadow: 0 0 10px 0; /* Inherits the font color */
+	height: 4px;
+	opacity: 0;
+
+	/* Add CSS3 styles for transition smoothing */
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.navbar-brand {
+	padding: 0;
+	color: #fff;
+	text-shadow: 0 1px 1px #000;
+	font-size: 1.25rem;
+	font-weight: 700;
+
+	img {
+		margin-right: 1rem;
+		margin-top: -5px;
+	}
+	&:hover {
+		color:#fff;
+	}
+}
+
+.white-text-shadow {
+	color: #fff;
+	text-shadow: 0 1px 1px #000;
+	text-decoration: none;
+}
+

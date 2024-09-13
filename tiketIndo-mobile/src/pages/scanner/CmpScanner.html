@@ -1,0 +1,67 @@
+<ion-header>
+	<ion-navbar>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<div *ngIf="gateKeeper">
+		<button *ngIf="isScanning" ion-button block (click)="scan()">Scan</button>
+		<ion-card *ngIf="decodedToken && data">
+			<ion-card-content>
+				<table class="table-summary">
+					<tbody>
+						<tr>
+							<th colspan="2">Scanner Result</th>
+						</tr>
+						<tr>
+							<td>Nama:</td>
+							<td text-right>{{data.buyerName}}</td>
+						</tr>
+						<tr>
+							<td>Nomor HP:</td>
+							<td text-right>{{data.phone}}</td>
+						</tr>
+						<tr>
+							<td>ID:</td>
+							<td text-right>{{data.noKtp}}</td>
+						</tr>
+						<tr>
+							<td>Event:</td>
+							<td text-right>{{decodedToken.venue}}</td>
+						</tr>
+						<tr>
+							<td>Tipe Tiket:</td>
+							<td text-right>{{decodedToken.ticket}}</td>
+						</tr>
+						<tr>
+							<td>ID Tiket:</td>
+							<td text-right>{{data.id}}</td>
+						</tr>
+						<tr>
+							<td>QTY:</td>
+							<td text-right>{{data.qty}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</ion-card-content>
+			<ion-grid>
+				<ion-row>
+					<ion-col>
+						<button ion-button full large color="danger" icon-only (click)="verify(data.id,'DENIED')">
+							<ion-icon name="close"></ion-icon>
+						</button>
+					</ion-col>
+					<ion-col>
+						<button ion-button full large color="secondary" icon-only (click)="verify(data.id,'VERIFIED')">
+							<ion-icon name="checkmark-circle-outline"></ion-icon>
+						</button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-card>
+	</div>
+	<div *ngIf="!gateKeeper">
+		<ion-item>
+			<p>Anda tidak diijinkan mengakses menu ini.</p>
+		</ion-item>
+	</div>
+</ion-content>

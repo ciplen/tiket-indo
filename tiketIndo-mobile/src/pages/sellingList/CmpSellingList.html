@@ -1,0 +1,30 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>Selling List</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<ion-card>
+		<form *ngIf="form" [formGroup]="form">
+			<ion-item>
+				<ion-label>Nama Event</ion-label>
+				<ion-select formControlName="venueId" (ionChange)="getTicketType()">
+					<ion-option *ngFor="let item of lstVenue" value="{{item.id}}">{{item.nama}}</ion-option>
+				</ion-select>
+			</ion-item>
+		</form>
+		<ion-card-content>
+			<table class="table-summary">
+				<tbody>
+					<tr>
+						<th colspan="2">Detail</th>
+					</tr>
+					<tr *ngFor="let item of lstCount">
+						<td>{{item.ticketType}}</td>
+						<td text-right>{{item.totalCount}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

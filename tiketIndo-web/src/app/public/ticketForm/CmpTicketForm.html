@@ -1,0 +1,391 @@
+<html>
+
+	<body>
+	<cmp-header></cmp-header>
+
+	<section class="hero-area">
+		<div class="hero-slides owl-carousel" style="display: block; margin-bottom: -480px;">
+			<!-- Single Hero Slide -->
+			<div id="img-big">
+				<div class="single-hero-slide d-flex align-items-center justify-content-center">
+					<div class="slide-img bg-img" style="background-image: url(assets/bg-monjali/Web1a.jpg);"></div>
+				</div>
+			</div>
+			<div id="img-big-small">
+				<div class="single-hero-slide d-flex align-items-center justify-content-center">
+					<div class="slide-img bg-img-small" style="background-image: url(assets/bg-monjali/Web1a.jpg);"></div>
+				</div>
+			</div>
+
+		</div>
+		<!-- bg gradients -->
+		<div class="bg-gradients"></div>
+	</section>
+
+	<div id="toggleAlert">
+		<div class="sweet-overlay" tabindex="-1" style="opacity: 1.46;display: block;"></div>
+		<div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false" data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="false" data-animation="pop" data-timer="null" style="display: block; margin-top: -150px;">
+			<div class="sa-icon sa-error" style="display: none;">
+				<span class="sa-x-mark">
+					<span class="sa-line sa-left"></span>
+					<span class="sa-line sa-right"></span>
+				</span>
+			</div>
+			<div class="sa-icon sa-warning" style="display: none;">
+				<span class="sa-body"></span>
+				<span class="sa-dot"></span>
+			</div>
+			<div class="sa-icon sa-info" style="display: none;"></div>
+			<div class="sa-icon sa-success" style="display: none;">
+				<span class="sa-line sa-tip"></span>
+				<span class="sa-line sa-long"></span>
+
+				<div class="sa-placeholder"></div>
+				<div class="sa-fix"></div>
+			</div>
+			<div class="sa-icon sa-custom" style="display: none;"></div>
+			<h2>Perhatian</h2>
+			<p style="display: block;">SETELAH MELAKUKAN PEMBAYARAN JANGAN LUPA KONFIRMASI PEMBAYARAN ANDA SESUAI BATAS WAKTU YANG TELAH DITENTUKAN. <br>LINK ATAU TOMBOL KONFIRMASI ADA DI INVOICE YANG KAMI KIRIM KE EMAIL ANDA.<br></p>
+			<div class="sa-button-container">
+				<button class="cancel" tabindex="2" style="display: none;">Cancel</button>
+				<button (click)="alert()" class="confirm" tabindex="1" style="background-color: rgb(85, 126, 218); box-shadow: rgba(221, 107, 85, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">Lanjutkan</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="container container-event">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="boxDetailEvent">
+					<h1 class="titleHeading">Dapatkan Tiket</h1>
+					<div class="box-detail-ticket">
+						<div class="row">
+							<div class="clearfix"></div>
+							<div class="col-md-6 hide-content-onMobile">
+								<div class="row">
+									<div class="card-form">
+										<div class="card-header"><b>Data Diri</b></div>
+										<div class="card-body">
+											<form #tickForm="ngForm" class="form-horizontal"
+												method="post" action="#">
+												<div *ngIf="model" mat-dialog-content>
+													<div *ngFor="let idty of model.identityList">
+														<div class="form-group">
+															<label for="name"
+																	 class="cols-sm-2 control-label">Nama</label>
+															<span class="info">
+																<i class="zmdi zmdi-info"></i> Nama harus sesuai KTP /
+																SIM / ATM
+																/ PASPORT / KARTU PELAJAR
+															</span>
+															<div class="cols-sm-10">
+																<div class="input-group">
+																	<span class="input-group-addon"><i
+																			class="fa fa-user fa"
+																			aria-hidden="true"></i></span>
+																	<input class="form-control" name="nama" required maxlength="255" minlength="3" placeholder="masukan lebih dari 3 karakter"
+																			 [(ngModel)]="idty.nama">
+																</div>
+															</div>
+														</div>
+														<div class="form-group">
+															<label for="noKtp" class="cols-sm-2 control-label">No
+																KTP</label>
+															<span class="info">
+																<i class="zmdi zmdi-info"></i> Nomer harus sesuai KTP
+															</span>
+															<div class="cols-sm-10">
+																<div class="input-group">
+																	<span class="input-group-addon"><i
+																			class="fa fa-user fa"
+																			aria-hidden="true"></i></span>
+																	<input type="number" class="form-control" name="ktp" required maxlength="255" minlength="3" placeholder="masukan lebih dari 3 karakter"
+																			 [(ngModel)]="idty.ktp">
+																</div>
+															</div>
+														</div>
+														<div *ngIf="id == '14'">
+															<div class="form-group">
+																<label for="tipeKaos" class="cols-sm-2 control-label">Tipe Kaos</label>
+																<div class="cols-sm-10">
+																	<div class="input-group">
+																		<span class="input-group-addon"><i
+																				class="fa fa-users fa"
+																				aria-hidden="true"></i></span>
+																		<select class="form-control" [(ngModel)]="idty.tipeKaos" name="tipeKaos" required>
+																			<option value="Sad Girl">Sad Girl</option>
+																			<option value="Sad Boy">Sad Boy</option>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="form-group">
+																<label for="ukuranKaos" class="cols-sm-2 control-label">Ukuran Kaos</label>
+																<div class="cols-sm-10">
+																	<div class="input-group">
+																		<span class="input-group-addon"><i
+																				class="fa fa-users fa"
+																				aria-hidden="true"></i></span>
+																		<select class="form-control" [(ngModel)]="idty.ukuranKaos" name="ukuranKaos" required>
+																			<option value="S">S</option>
+																			<option value="M">M</option>
+																			<option value="L">L</option>
+																			<option value="XL">XL</option>
+																			<option value="XXL">XXL</option>
+																		</select>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="qty" class="cols-sm-2 control-label">Jumlah Tiket</label>
+														<div class="cols-sm-10">
+															<div class="input-group">
+																<span class="input-group-addon"><i
+																		class="fa fa-envelope fa"
+																		aria-hidden="true"></i></span>
+																<input name="qty" class="form-control" required readOnly
+																		 [(ngModel)]="model.qty">
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="email" class="cols-sm-2 control-label">Email</label>
+														<span class="info">
+															<i class="zmdi zmdi-info"></i> Email harus aktif,
+														</span>
+														<div class="cols-sm-10">
+															<div class="input-group">
+																<span class="input-group-addon"><i
+																		class="fa fa-envelope fa"
+																		aria-hidden="true"></i></span>
+																<input name="email" class="form-control" required
+																		 [(ngModel)]="model.email">
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<label for="username" class="cols-sm-2 control-label">No
+															Telepon</label>
+														<span class="info">
+															<i class="zmdi zmdi-info"></i> Nomer Telepon yang bisa di
+															hubungi.
+														</span>
+														<div class="cols-sm-10">
+															<div class="input-group">
+																<span class="input-group-addon"><i
+																		class="fa fa-users fa"
+																		aria-hidden="true"></i></span>
+																<input name="noTelepon" class="form-control" required
+																		 [(ngModel)]="model.noTelepon">
+															</div>
+														</div>
+													</div>
+													<!-- Tgl Lahir -->
+													<div class="form-group">
+														<label for="tanggalLahir" class="cols-sm-2 control-label">Tanggal Lahir</label>
+														<div class="cols-sm-10">
+															<!-- <p-calendar class="form-control" name="tanggalLahir" [(ngModel)]="model.tanggalLahir" placeholder="dd-mm-yyyy" dateFormat="dd-mm-yy"></p-calendar> -->
+															<!-- <input type="date" class="form-control" name="tanggalLahir" [(ngModel)]="model.tanggalLahir" placeholder="dd-mm-yyyy" dateFormat="dd-mm-yyyy"> -->
+															<input [matDatepicker]="picker" (focus)="picker.open()" 
+																placeholder="Choose a date" class="form-control" name="tanggalLahir" [(ngModel)]="model.tanggalLahir">
+															<mat-datepicker #picker></mat-datepicker>
+														</div>
+													</div>
+													<!-- End Tgl Lahir -->
+													<!-- Provinsi dan Kota Asal -->
+													<div class="row">
+														<div class="col-sm-6">
+															<div class="form-group">
+																<label for="provinsi" class="cols-sm-2 control-label">Provinsi</label>
+																<select class="form-control" required name="provinsiId" (change)="onChange($event)" required>
+																	<option value=""></option>
+																	<option *ngFor="let item of lstProvinsi" [value]="item.id">{{item.namaProvinsi}}</option>
+																</select>
+															</div>
+														</div>
+														<div class="col-sm-6">
+															<div class="form-group">
+																<label for="kota" class="cols-sm-2 control-label">Kota / Kabupaten</label>
+																<select class="form-control" [(ngModel)]="model.kotaAsal" required name="kota">
+																	<option value=""></option>
+																	<option *ngFor="let item of lstKota" [value]="item.namaKota">{{item.namaKota}}</option>
+																</select>
+															</div>
+														</div>
+													</div>
+													<!-- End Provinsi dan Kota Asal -->
+													<span style="font-style: italic; color: red;">*Pembelian tiket di atas jam 21:00 WIB akan diproses keesokan harinya.</span>
+													<br />
+													<div class="form-group">
+														<div id="toggleButton">
+															<button routerLinkActive="router-link-active"
+																	  class="btn btn-primary btn-lg btn-block login-button"
+																	  (click)="getCodeUniq()"
+																	  style="background-color: #007bff; border-radius: 15px;"
+																	  [disabled]="!tickForm.form.valid" (click)="onSubmit()">{{'Proses'}}
+															</button>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div *ngIf="venueData && ticMainData" class="col-md-6">
+								<div class="aside-info mobile-section" id="open-info">
+									<div class="box-info-ticket">
+										<h4>Informasi Tiket Anda</h4>
+										<div class="box-info-ticket__list">
+											<h5>Nama Event:</h5>
+											<h3 style="color:#dc98d6;"> {{venueData.nama}}</h3>
+										</div>
+										<div class="box-info-ticket__list">
+											<h5>Jenis Tiket:</h5>
+											<h6 style="color:#dc98d6;"> {{ticMainData.type}}</h6>
+										</div>
+										<div class="box-info-ticket__list">
+											<h5>Tempat:</h5>
+											<h6 class="size-widht" style="color:#dc98d6;"><img style="width: 3%;" src="assets/map.png">
+												{{venueData.tempat}}</h6>
+										</div>
+										<div *ngIf="venueData.id!=5" class="box-info-ticket__list">
+											<h5>Tanggal &amp; Waktu:</h5>
+											<h6 class="size-widht" style="color:#dc98d6"><img style="width: 3%;" src="assets/tgl02.png">
+												{{model.tanggalAwal | date:'dd MMM yyyy'}}</h6>
+										</div>
+									</div>
+								</div>
+								<hr>
+								<div id="toggle">
+									<div class="form__row form__row--alt">
+										<h4 style="text-align: center;">Pilih Rekening Tujuan</h4>
+										<div class="category-select payment-opt">
+											<div class="category-select-head js-category-select-head" style="border: none;">
+												<input type="text" class="sr-only">
+												<div class="col align-left margin-left-3">
+													<div class="col--s10 d-flex center">
+														<span class="d-inline">
+															<img class="js-category-select__target-img flex-center-vh" src="{{pict}}" width="60">
+														</span>
+														<div class="flex-1 small-margin-lr">
+														</div>
+													</div>
+													<div class="col--s2">
+														<span class="text-blue text-bold" (click)="changePayment()">
+															Pilih Rekening
+														</span>
+													</div>
+												</div>
+												<div *ngIf="ganti">
+													<ul
+														class="list-nostyle category-select-list black-border js-category-select-list">
+														<li *ngFor="let item of lstPayment"
+															class="category-select-list__item donate-payment" data-opt="20"
+															(click)="changePayment(item)">
+															<div class="col align-left margin-left-3">
+																<div class="col--s10 d-flex center">
+																	<span class="d-inline">
+																		<img class="js-category-select__img flex-center-vh "
+																			  src="{{item.pict}}" width="60">
+																	</span>
+																	<div class="flex-1 small-margin-lr">
+																		<span class=" js-category-select-head__text">{{item.label}}</span>
+																	</div>
+																</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card box-cart" style="padding: 30px;">
+										<h2 style="color: black; text-align: center;">Rincian Transfer</h2>
+										<div class="box-price">
+											<div class="box-price__item">
+												<label>Bank Tujuan</label>
+												<label class="text-size"><b>{{rekTujuan}}</b></label>
+											</div>
+										</div>
+										<div class="box-price">
+											<div class="box-price__item">
+												<label>No Rekening</label>
+												<b class="text-size">{{noRek}}</b>
+											</div>
+										</div>
+										<div class="box-price">
+											<div class="box-price__item">
+												<label>Atas Nama</label>
+												<b class="text-size">{{an}}</b>
+											</div>
+										</div>
+										<br>
+										<div>
+											<div class="card box-cart" style="padding: 30px;">
+												<h4 style="color: black; text-align: center;">Rincian Harga</h4>
+												<div class="box-price">
+													<div class="box-price__item">
+														<label>Jenis Tiket</label> <strong>{{ticMainData.type}}</strong>
+													</div>
+												</div>
+												<div class="box-price">
+													<div class="box-price__item">
+														<label>Harga</label>
+														<label><b>Rp.{{totalHarga | number:'.0-2' }}</b></label>
+													</div>
+												</div>
+												<div class="box-price__item grand-total">
+													<label>Goverment Tax 10%</label>
+													<label><b>Rp.{{tax | number:'.0-2'}}</b></label>
+												</div>
+												<div class="box-price">
+													<div class="box-price__item">
+														<label>Quantity</label>
+														<label><b>Rp.{{model.hargaPeriode1 | number:'.0-2' }} x ({{qty}}
+																tiket)</b></label>
+													</div>
+												</div>
+												<div class="box-price__item grand-total">
+													<label>Diskon Tiket</label>
+													<label><b>{{hargaDiskon | number:'.0-2' }} {{notifDscnt}} ({{discount}}) %</b></label>
+												</div>
+												<div class="box-price__item grand-total">
+													<label>kode unik</label>
+													<label><b>{{codeUnique}}</b></label>
+												</div>
+												<div class="box-price__item grand-total">
+													<label>Total</label>
+													<label><b>Rp.{{hargaCodeTaxDis | number:'.0-2' }}</b></label>
+												</div>
+												<div class="ballon">
+													Nominal Harga wajib dimasukan dengan tepat
+												</div>
+
+												<br>
+												<span style="font-style: italic; color: red;">*Batas waktu pembayaran 24 Jam setelah pemesanan tiket</span>
+												<div class="form-group">
+													<button (click)="saveData()" type="submit"
+														class="btn btn-primary btn-lg btn-block login-button"
+														style="background-color: #007bff; font-size: 18px; border-radius: 15px;"
+														[disabled]="saving">Pesan Sekarang</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<br>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<cmp-footer></cmp-footer>
+
+</html>

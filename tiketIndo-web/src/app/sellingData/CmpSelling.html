@@ -1,0 +1,32 @@
+<div class="ribbon">
+	<div class="page-title">Data Penjualan</div>
+</div>
+
+<div class="card">
+	<div class="card-body">
+		<form>
+			<div *ngIf="lstEvent" class="form-group row">
+				<label class="col-sm-2 col-form-label">Pilih Event</label>
+				<div class="col-sm-4">
+					<select class="form-control" [(ngModel)]="eventId" name="eventId" (change)="find(eventId)" required>
+						<option *ngFor="let event of lstEvent" [value]="event.id">{{event.nama}}</option>
+					</select>
+				</div>
+			</div>
+			<div *ngIf="data">
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Total Terjual Via Web</label>
+					<div class="col-sm-4">
+						<input type="string" class="form-control" disabled="true" value="{{data[0]}}">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Total Terjual Via Apps</label>
+					<div class="col-sm-4">
+						<input type="string" class="form-control" disabled="true" value="{{data[1]}}">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

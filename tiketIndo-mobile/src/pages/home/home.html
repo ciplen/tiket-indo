@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Reseller App</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content style="background: #002752;" padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <button style="height:80px; border-radius: 21px 21px 21px 21px;
+            -moz-border-radius: 21px 21px 21px 21px;
+            -webkit-border-radius: 21px 21px 21px 21px;
+            border: 5px double #e6dfe6;" ion-button size="large" ion-button color="danger" size="large" block (click)="scan()">Scan Ticket</button>
+    <button style="height:80px; border-radius: 21px 21px 21px 21px;
+            -moz-border-radius: 21px 21px 21px 21px;
+            -webkit-border-radius: 21px 21px 21px 21px;
+            border: 5px double #e6dfe6;" ion-button size="large" block color="secondary" (click)="generate()">Generate Ticket</button>
+    <ion-card *ngIf="koordinator">
+        <ion-card-header>
+            <ion-label>Koordinator: <span style="font-weight: bold;">{{loggedUser.username}}</span></ion-label>
+        </ion-card-header>
+        <form *ngIf="form" [formGroup]="form">
+            <ion-item>
+                <ion-label>Nama Event</ion-label>
+                <ion-select formControlName="venueId" (ionChange)="getPenjualan()">
+                    <ion-option *ngFor="let item of lstVenue" value="{{item.id}}">{{item.nama}}</ion-option>
+                </ion-select>
+            </ion-item>
+        </form>
+        <ion-card-content>
+            <table class="table-summary">
+                <tbody>
+                    <tr>
+                        <th colspan="2">Detail</th>
+                    </tr>
+                    <tr *ngFor="let item of lstCount">
+                        <td>{{item.reseller}}</td>
+                        <td text-right>{{item.totalCount}}</td>
+                    </tr>
+                    <tr style="background: #93adca;">
+                        <td>Total:</td>
+                        <td text-right>{{total}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ion-card-content>
+    </ion-card>
+    <div style="margin-top: 35%" text-center >
+        <img style="width: 70%; text-align: center !important;"src="assets/imgs/tiketindo.png"/>
+    </div>
+</ion-content>

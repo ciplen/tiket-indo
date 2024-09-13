@@ -1,0 +1,97 @@
+<div class="ribbon">
+	<!--<div class="page-title">{{'access.right' | translate}}</div>-->
+	<div class="page-title">Venue Maintenance</div>
+</div>
+<div class="card mb-3">
+	<div class="card-header"  (click)="expandCollapse('#pnlBody')">{{'search.criteria' | translate}} <span *ngIf="searchLabel" class="search-cue">{{searchLabel}}</span>
+		<div class="float-right">
+			<a title="{{'help' | translate}}" routerLink="/home/help" class="mr-2">
+				<i class="icon-question-circle-o"></i>
+			</a>
+			<a role="button" data-toggle="collapse" href="#pnlBody" aria-expanded="false" aria-controls="collapseExample">
+				<i class="fa toggle-expand"></i>
+			</a>
+		</div>
+	</div>
+	<div class="card-body collapse show" id="pnlBody">
+		<div >
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.nama.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.nama.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.tempat.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.tempat.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.tanggalAwal.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.tanggalAwal.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.tanggalAkhir.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.tanggalAkhir.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group row mb-0">
+				<div class="col-sm-2 offset-sm-2">
+					<button (click)="reloadFirstPage()" type="button" class="btn btn-default"><i class="icon-search"></i> {{'search' | translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="tableData" class="card">
+	<div class="card-header">
+		<p-table-helper #tableHelper
+			[srvMasterData]="srvMasterData"
+			[table]="myTable" 
+			(sort)="onSort($event)" [templateKey]="prefix" 
+			[rows]="tableData.rows"></p-table-helper>
+		{{'search.result' | translate}}
+		<div class="float-right">
+			<div *ngIf="canMaintain" class="btn-group p-pagination mr-1">
+				<a title="{{'add' | translate}}" class="btn btn-default btn-sm" routerLink="0"><i class="icon-plus"></i></a>
+				<button title="{{'update' | translate}}" type="button" class="btn btn-default btn-sm" (click)="edit()" [disabled]="noRowSelected"><i class="icon-pencil"></i></button>
+				<button title="{{'delete' | translate}}" type="button" class="btn btn-default btn-sm text-danger" (click)="deleteSelected()" [disabled]="noRowSelected"><i class="icon-trash-empty"></i></button>
+			</div>
+
+			<a title="{{'export' | translate}}" class="btn btn-default btn-sm mr-1" (click)="exportData()"><i class="icon-file-excel"></i></a>
+
+			<p-pagination [paginationObject]="paginationObject" (reload)="reload()" class="ml1"></p-pagination>
+
+
+		</div>
+	</div>
+	<div class="card-body">
+		<ngx-datatable #myTable class="material" [style.height]="tableHeight"
+			[reorderable]="false"
+			[scrollbarV]="true"
+			[scrollbarH]="true"
+			[selected]="selected"
+			[selectionType]="'single'"
+			(select)="onSelect($event)"
+			[externalSorting]="true">
+			<ngx-datatable-column prop="{{'number' | translate}}" [sortable]="false">
+				<ng-template let-rowIndex='rowIndex' ngx-datatable-cell-template>
+					{{rowIndex + 1 + paginationObject.startIndex}}
+				</ng-template>
+			</ngx-datatable-column>
+			<ngx-datatable-column prop="nama" name="Nama Event"></ngx-datatable-column>
+			<ngx-datatable-column prop="tempat" name="Tempat"></ngx-datatable-column>
+			<ngx-datatable-column prop="tanggalAwal" name="Tanggal Mulai"></ngx-datatable-column>
+			<ngx-datatable-column prop="tanggalAkhir" name="Tanggal Berakhir"></ngx-datatable-column>
+			<ngx-datatable-column prop="typeVenue" name="Tipe Venue"></ngx-datatable-column>
+		</ngx-datatable>
+	</div>
+</div>

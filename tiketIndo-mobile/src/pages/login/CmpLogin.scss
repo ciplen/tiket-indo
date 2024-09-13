@@ -1,0 +1,13 @@
+page-login{
+	background-color: #002752;
+}
+ion-img.logo{
+	object-fit: cover;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100px;
+	height: 100px;
+	/*width: 100%;*/
+	tr:nth-child(odd) {background-color: #f2f2f2;}
+	display: block;
+}

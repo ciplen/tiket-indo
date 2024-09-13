@@ -1,0 +1,355 @@
+<html>
+
+	<body>
+	<cmp-header></cmp-header>
+
+	<section class="hero-area">
+		<div class="hero-slides owl-carousel" style="display: block; margin-bottom: -480px;">
+			<!-- Single Hero Slide -->
+			<div id="img-big">
+				<div class="single-hero-slide d-flex align-items-center justify-content-center">
+					<div class="slide-img bg-img" style="background-image: url(assets/bg-monjali/Web1a.jpg);"></div>
+				</div>
+			</div>
+			<div id="img-big-small">
+				<div class="single-hero-slide d-flex align-items-center justify-content-center">
+					<div class="slide-img bg-img-small" style="background-image: url(assets/bg-monjali/Web1b.jpg);"></div>
+				</div>
+			</div>
+		</div>
+		<!-- bg gradients -->
+		<div class="bg-gradients"></div>
+	</section>
+
+	<div id="toggle">
+		<div class="sweet-overlay" tabindex="-1" style="opacity: 1.46;display: block;"></div>
+		<div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false" data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="false" data-animation="pop" data-timer="null" style="display: block; margin-top: -150px;">
+			<div class="sa-icon sa-error" style="display: none;">
+				<span class="sa-x-mark">
+					<span class="sa-line sa-left"></span>
+					<span class="sa-line sa-right"></span>
+				</span>
+			</div>
+			<div class="sa-icon sa-warning" style="display: none;">
+				<span class="sa-body"></span>
+				<span class="sa-dot"></span>
+			</div>
+			<div class="sa-icon sa-info" style="display: none;"></div>
+			<div class="sa-icon sa-success" style="display: none;">
+				<span class="sa-line sa-tip"></span>
+				<span class="sa-line sa-long"></span>
+
+				<div class="sa-placeholder"></div>
+				<div class="sa-fix"></div>
+			</div>
+			<div class="sa-icon sa-custom" style="display: none;"></div>
+			<h2>Perhatian</h2>
+			<p style="display: block;">SETELAH MELAKUKAN PEMBAYARAN JANGAN LUPA KONFIRMASI PEMBAYARAN ANDA SESUAI BATAS WAKTU YANG TELAH DITENTUKAN. <br>LINK ATAU TOMBOL KONFIRMASI ADA DI INVOICE YANG KAMI KIRIM KE EMAIL ANDA.<br></p>
+			<div class="sa-button-container">
+				<button class="cancel" tabindex="2" style="display: none;">Cancel</button>
+				<button (click)="alert()" class="confirm" tabindex="1" style="background-color: rgb(85, 126, 218); box-shadow: rgba(221, 107, 85, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">Lanjutkan</button>
+			</div>
+		</div>
+	</div>
+	
+<!--	
+	<div id="privacy">
+		<div class="sweet-overlay" tabindex="-1" style="opacity: 1.46;display: none;"></div>
+		<div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false" data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="false" data-animation="pop" data-timer="null" style="display: block; margin-top: -150px;">
+			<h2>Perhatian</h2>
+			<p style="display: block;">SETELAH MELAKUKAN PEMBAYARAN JANGAN LUPA KONFIRMASI PEMBAYARAN ANDA SESUAI BATAS WAKTU YANG TELAH DITENTUKAN. <br>LINK ATAU TOMBOL KONFIRMASI ADA DI INVOICE YANG KAMI KIRIM KE EMAIL ANDA.<br></p>
+			<div class="sa-button-container">
+				<button (click)="privacy()" class="confirm" tabindex="1" style="background-color: rgb(85, 126, 218); box-shadow: rgba(221, 107, 85, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">Lanjutkan</button>
+			</div>
+		</div>
+	</div>-->
+
+	<div *ngIf="typeVenue != 'Wisata'" class="container container-event">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="boxDetailEvent">
+					<h1 class="titleHeading">Dapatkan Tiket Anda</h1>
+					<div class="box-detail-ticket">
+						<div class="row">
+							<div class="clearfix"></div>
+							<div id="inform-diasbled" class="col-md-6 hide-content-onMobile">
+								<h3 style="color: white;">Informasi Tiket</h3>
+								<table>
+									<tbody>
+										<tr>
+											<td>Tipe Tiket</td>
+											<td>:</td>
+											<td>{{type}}</td>
+										</tr>
+										<tr>
+											<td>Nama Event</td>
+											<td>:</td>
+											<td>
+												{{nama}}
+											</td>
+										</tr>
+										<tr>
+											<td>Tempat</td>
+											<td>:</td>
+											<td>{{tempat}} </td>
+										</tr>
+										<tr>
+											<td>Waktu</td>
+											<td>:</td>
+											<td>{{tgl | date:'dd MMM yyyy'}}</td>
+										</tr>
+										<tr>
+											<td>Harga</td>
+											<td>:</td>
+											<td>Rp.{{hargaPeriode1 | number:'.0-2'}}</td>
+											<!--<td>Rp.{{discountPrice | number:'.0-2'}}</td>-->
+										</tr>
+										<!--										<tr>
+																					<td>Ktereangan TIket</td>
+																					<td>:</td>
+																					<td>{{description}}</td>
+																				</tr>-->
+									</tbody>
+								</table>
+							</div>
+							<div class="col-md-6">
+								<div class="alert alert-danger text-center text-bold">LAKUKAN PEMBAYARAN SESUAI JUMLAH YANG TERTERA DI INVOICE ANDA 
+									<br> SETELAH MELAKUKAN PEMBAYARAN JANGAN LUPA KONFIRMASI PEMBAYARAN ANDA SESUAI BATAS WAKTU YANG TELAH DITENTUKAN
+									<br>LINK ATAU TOMBOL KONFIRMASI ADA DI INVOICE YANG KAMI KIRIM KE EMAIL ANDA<br>
+								</div>
+								<h3 style="color: white;">Informasi Tiket Anda</h3>
+								<table>
+									<tbody>
+									<div>
+										<tr class="tanda">
+											<td>Pilih Quantity</td>
+											<td>:</td>
+											<td>
+												<select id="" class="quantity" [(ngModel)]="qty"
+														  (ngModelChange)="onInputChange($event)">
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+												</select>
+											</td>
+										</tr>
+									</div>
+									<tr>
+										<td>Harga Tiket</td>
+										<td>:</td>
+										<td>
+											<a>
+												<form method="GET">
+													<span class="total_bayar">Rp.{{total | number:'.0-2'}}</span>
+													<!--<span class="total_bayar">Rp.{{discount | number:'.0-2'}}</span>-->
+												</form>
+											</a>
+										</td>
+									</tr>
+									<!--<tr><p>harga sudah termasuk pajak 10%</p></tr>-->
+									<tr>
+										<td colspan="3" style="width:100%;">
+											<label>
+												<span class="ketentuan">Exclude Goverment Tax 10%</span>
+											</label>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3" style="width:100%;">
+											<label>
+												<input (click)="click()" type="checkbox" name="faq" class="faq" id="agree" checked="true"
+													required=""> <span class="ketentuan"><a style="color: #2a63a0" target="blank_space"> Saya Telah Menyetujui Syarat dan Ketentuan</a></span>
+											</label>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+
+								<div id="togglePolice" class="alert alert-danger text-bold">
+									<p class="text-center" style="color: #2a63a0" >Syarat dan Ketentuan</p>
+									<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+										<div class="card-body">
+											<li>
+												E-tiket akan masuk secara otomatis ke email yang sudah anda berikan/masukan, silahkan cek inbox atau folder spam pada email anda.
+											</li>
+											<li>
+												E-tiket berlaku untuk tanda masuk arena acara, kami sarankan untuk mencetak e tiket ini.
+											</li>
+											<li>
+												Pembelian yang sah hanya dapat didapatkan secara online melalui tiketindonesia.id atau ticket box dan reseller yang ditunjuk,
+												(e tiket resmi dikirim melalui email indotik.panemu@gmail.com)
+											</li>
+											<li>
+												Pembelian e tiket resmi melalui tiketindonesia.id , tiketbox dan releller tiket akan dikirim melalui email,
+												pastikan pengiriman emaul adalah: indotik.pnameu@gmail.com
+											</li>
+											<li>
+												Kehilangan dan kerusakan e-tiket bukan tanggung jawab promotor dan TIKET INDOENSIA, harap perhatikan dengan baik e-tiket anda
+											</li>
+											<li>
+												Penyelenggara berhak melarang masuk pengunjung yang tidak dapat menunjukan e-tiket
+											</li>
+											<li>
+												Pembeli hanya diperkenankan sekali mencetak e-tiket, pencetak ulangan dan penggandaan e-tiket merupakan perbuatan melanggar hukum
+											</li>
+											<li>
+												E-tiket dengan QRcode yang telah dipergunakan sebelumnya tidak berlaku
+											</li>
+											<li>
+												Penyelenggara berhak untuk menolak penukaran e-tiket dengan code QRcode yang telah terdeteksi masuk sebelumnya
+											</li>
+											<li>
+												E-tiket yang telah dibeli tidak dapat ditukar / diuangkan kembali
+											</li>
+											<li>
+												Harap membawa kartu identitas diri yang sesuai dengan data yang didaftarkan pada saat reservasi
+											</li>
+											<hr>
+											<h5 class="text-center" style="color: #2a63a0">
+												SYARAT DAN KETENTUAN E TIKET DIATAS TELAH SAYA BACA, PAHAMI, MENGERTI, DAN SAYA MENYETUJUI UNTUK TERIKAT SECARA HUKUM ATAS SYARAT DAN KETENTUAN DI ATAS
+											</h5>
+										</div>
+									</div>
+								</div>
+
+								<tr>
+									<td id="toggleAlert" colspan="3" class="go">
+										<a (click)="submit()" class="btn-buy-small btn-recommended musica-btn" style="color: white;">Beli Tiket</a>
+									</td>
+								</tr>
+
+							</div>
+							<figure class="poster-events">
+								<hr style="height: 1px; background-color: white;">
+								<a href="assets/bg-img/cidroBaju.jpeg" class="show_popup" rel="prettyPhoto">
+									<img class="center-img" src="{{pict}}">
+								</a>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div *ngIf="typeVenue == 'Wisata'" class="container container-event">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="boxDetailEvent">
+					<h1 class="titleHeading">Dapatkan Tiket Anda</h1>
+					<div class="box-detail-ticket">
+						<div class="row">
+							<div class="clearfix"></div>
+							<div class="col-md-6 hide-content-onMobile">
+								<h3 style="color: white;">Informasi Event Anda</h3>
+								<table>
+									<tbody>
+										<tr>
+											<td>Tipe Tiket</td>
+											<td>:</td>
+											<td>{{type}}</td>
+										</tr>
+										<tr>
+											<td>Nama Event</td>
+											<td>:</td>
+											<td>
+												{{venueData.nama}}
+											</td>
+										</tr>
+										<tr>
+											<td>Tempat</td>
+											<td>:</td>
+											<td>{{venueData.tempat}} </td>
+										</tr>
+										<tr>
+											<td>Harga</td>
+											<td>:</td>
+											<td>Rp.{{hargaPeriode1 | number:'.0-2'}}</td>
+											<!--<td>Rp.{{discountPrice | number:'.0-2'}}</td>-->
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="col-md-6">
+								<div class="alert alert-danger text-center text-bold">LAKUKAN PEMBAYARAN SESUAI JUMLAH YANG TERTERA DI INVOICE ANDA 
+									<br> SETELAH MELAKUKAN PEMBAYARAN JANGAN LUPA KONFIRMASI PEMBAYARAN ANDA SESUAI BATAS WAKTU YANG TELAH DITENTUKAN
+									<br>LINK ATAU TOMBOL KONFIRMASI ADA DI INVOICE YANG KAMI KIRIM KE EMAIL ANDA<br>
+								</div>
+								<h3 style="color: white;">Informasi Tiket Anda</h3>
+								<table>
+									<tbody>
+									<div>
+										<tr class="tanda">
+											<td>Pilih Quantity</td>
+											<td>:</td>
+											<td>
+												<select id="" class="quantity" [(ngModel)]="qty"
+														  (ngModelChange)="onInputChange($event)">
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+													<option value="9">9</option>
+													<option value="10">10</option>
+												</select>
+											</td>
+										</tr>
+									</div>
+									<tr>
+										<td>Harga Tiket</td>
+										<td>:</td>
+										<td>
+											<a>
+												<form method="GET">
+													<span class="total_bayar">Rp.{{total | number:'.0-2'}}</span>
+													<!--<span class="total_bayar">Rp.{{discount | number:'.0-2'}}</span>-->
+												</form>
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3" style="width:100%;">
+											<label>
+												<span *ngIf="discountData" class="ketentuan">Minimal order ( {{minDiskon}} ) dapat diskon ( {{discount}}% )</span>
+												<span *ngIf="!discountData" class="ketentuan">{{notifDscnt}}</span>
+											</label>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3" style="width:100%;">
+											<label>
+												<span class="ketentuan">Exclude Goverment Tax 10%</span>
+											</label>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3" style="width:100%;">
+											<label>
+												<input (click)="click()" type="checkbox" name="faq" class="faq" id="agree" checked="true"
+													required=""> <span class="ketentuan">Saya menyetujui <a style="color: #255181;" href="https://tiketindonesia.id/news/index.php/privacy-policy/" target="blank_space">Syarat dan Ketentuan</a></span>
+											</label>
+										</td>
+									</tr>
+									<tr>
+										<td id="toggleAlert" colspan="3" class="go">
+											<a (click)="submit()" class="btn-buy-small btn-recommended musica-btn" style="color: white;">Beli Tiket</a>
+										</td>
+									</tr>									
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<cmp-footer></cmp-footer>
+</html>

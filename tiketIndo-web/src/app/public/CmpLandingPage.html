@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Home - Tiket Indonesia</title>
+	</head>
+
+	<body>
+		<header id="Scroll" (scroll)="onWindowScroll($event);" class="header-area">
+			<div class="musica-main-menu">
+				<div class="classy-nav-container breakpoint-off">
+					<div class="container-fluid">
+						<nav class="classy-navbar navbar navbar-expand-lg fixed-top custom-nav sticky stickyadd">	
+							<div class="container">
+								<!-- LOGO -->
+								<a class="logo navbar-brand" [routerLink]="['/']" routerLinkActive="router-link-active">
+									<img src="assets/tiketindo2.png" alt="" class="img-fluid logo-light"> 
+									<img src="assets/tiketindo2.png" alt="" class="powered-img img-fluid logo-dark">
+								</a>
+								<div class="classy-navbar-toggler">
+									<span style="color: white" class="navbarToggler" (click)="toggleProfilePanel()"
+											[class.active]="showProfilePanel"><span></span><span></span><span></span></span>
+								</div>
+								<div class="classy-menu">
+									<div id="myLinks">
+										<!-- close btn -->
+										<div class="classy-menu breakpoint-on" style="margin-right: 1px;">
+											<ul>
+												<li><a href="https://www.instagram.com/inspro01/?hl=id" target="blank_space">Tentang Kami</a></li>
+												<li><a href="https://tiketindonesia.id/news/" target="blank_space">Berita</a></li>
+												<li><a href="https://www.instagram.com/etnichestra/?igshid=zdc5n96v4dp1" target="blank_space">Hubungi Kami</a></li>
+											</ul>
+											<br><br>
+											<h4 class="powered">Powered by:</h4>
+											<div class="center-img">
+												<a href="" routerLinkActive="router-link-active">
+													<img class="powered-img"
+														  src="assets/bg-img/inspro.png" alt="">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="collapse navbar-collapse" id="navbarCollapse">
+									<ul class="navbar-nav mx-auto navbar-center" id="mySidenav">
+										<li class="nav-item">
+											<a href="https://www.instagram.com/inspro01/?hl=id" class="nav-link">Tentang Kami</a>
+										</li>
+										<li class="nav-item">
+											<a [ngx-scroll-to]="destinationRef" class="nav-link">Beli Tiket</a>
+										</li>
+										<li class="nav-item">
+											<a href="https://tiketindonesia.id/news/" class="nav-link">Berita</a>
+										</li>
+									</ul>
+									<a class="logo navbar-brand second-img" href="index.html">
+										<img src="assets/tiketindo2.png" alt="" class="img-fluid logo-light"> 
+										<img style="max-width: 100px; margin-right: 50px;" src="assets/bg-img/inspro.png" alt="" class="img-fluid logo-dark">
+
+										<img id="light-img" src="assets/tiketindo2.png" alt="" class="img-fluid logo-light"> 
+									</a>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div class="single-hero-slide hero-area">
+			<div class="mySlides slide-img">
+				<div id="img-big">
+					<img src="assets/bg-img/bg-landing.png">
+				</div>
+				<div  id="img-small">
+					<img src="assets/bg-img/buyTic.png">
+				</div>
+			</div>
+
+			<div class="mySlides slide-img slider-slide-in">
+				<div id="img-big">
+					<img src="assets/bg-monjali/Web3.jpg">
+				</div>
+				<div  id="img-small">
+					<img src="assets/bg-monjali/small.png">
+				</div>
+			</div>
+
+			<!--			<div class="mySlides slide-img slider-slide-in">
+							<div id="img-big">
+								<img src="assets/bg-img/pict1.jpeg" style="width:100%">
+							</div>
+							<div id="img-small">
+								<img src="assets/bg-img/small/02.png">
+							</div>
+						</div>-->
+
+			<a class="prev" (click)="prevSlide()">&#10094;</a>
+			<a class="next" (click)="nextSlide()">&#10095;</a>
+
+		</div>
+		<br>
+
+		<div class="hideLah bigHeader">
+			<div class="box-content">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="fontSize">  Festival Lampion Jogja </h1>
+							<!--<a (click)=checkAvailability(9); class="btn-buy">BELI TIKET !</a>-->
+							<a (click)=toggleModel2(); class="btn-buy">BELI TIKET !</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bigHeader">
+			<div class="box-content">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="fontSize">  Festival Lampion Jogja </h1>
+							<!--<a (click)=checkAvailability(9); class="btn-buy">BELI TIKET !</a>-->
+							<a (click)=toggleModel2(); class="btn-buy">BELI TIKET !</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bigHeader"></div>
+
+		<div id="destination" #destinationRef class="section-padding-100-0 bg-img bg-overlay" id="about">
+			<div id="myModal2" class="modal">
+				<!-- Modal content -->
+				<div class="modal-content">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<button type="button" class="close" id="close" data-dismiss="modal" (click)="toggleModel2()">×</button>
+					</div>
+					<!-- Modal body -->
+					<div class="modal-body" style="padding: 70px 0;text-align: center;">
+						<h5>Maaf Event ini di pending untuk sementara</h5>
+						<p>Silahkan hubungi CS untuk info lebih lanjut</p>
+					</div>
+				</div>
+			</div>
+
+			<div id="myModal" class="modal">
+				<!-- Modal content -->
+				<div class="modal-content">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<button type="button" class="close" id="close" data-dismiss="modal" (click)="toggleModel()">×</button>
+					</div>
+					<!-- Modal body -->
+					<div class="modal-body" style="padding: 70px 0;text-align: center;">
+						<h5>Event yang anda pilih sudah kadaluarsa</h5>
+						<p>Silahkan pilih event yang akan datang</p>
+					</div>
+				</div>
+			</div>
+
+			<!--			<div>
+							<div class="container">
+								<div class="upcoming-shows-area section-padding-100">
+									<div class="container">
+										<div class="row">
+											<div class="col-12">
+												<div class="section-heading">
+													<h4 class="ket_opportunity"></h4>
+													<h2>Tiket Wisata</h2>
+													<hr class="style-one" style="height: 2px; background-color: #a4259b;"><br>
+												</div>
+											</div>
+										</div>
+			
+										<div class="row">
+											<div *ngFor="let item of lstValidateVenue">
+												<div class="rec-event col-md-4 col-sm-6">
+													<div class="box-events-recommended" style="padding: 15px; border-radius: 15px;">
+														<div class="box-img-events-recommended show_detail" data-url="#"
+															  [ngStyle]="{ 'background-image': 'url(' + getBigBannerUrl + item.id + ')', 'height': '239.497px' }">
+													</div>
+			
+													<div class="desc-event-recommended">
+														<ul class="dateAndplace">
+															<li><img style="width: 6%;" src="assets/tgl.png">
+																{{item.tanggalAwal | date:'dd MMM yyyy'}}
+															</li>
+															<li><img style="width: 6%;" src="assets/map02.png">
+																{{item.tempat}}
+															</li>
+															<li style="font-size: 18px;font-family: Montserrat,serif; line-height: 24px;">{{item.nama}}</li>
+														</ul>
+													</div>
+													<a style="color: white;" class="btn-buy-small btn-recommended"
+														(click)=checkWisataTicket(item.id);>Beli Tiket</a>
+												</div>
+											</div>
+										</div>
+									</div>
+			
+									<div *ngIf="emptyWisata">
+										<div id="emptyTicket" style="height: 190px; border-radius: 15px;">
+											<div class="row">
+												<div class="col-12">
+													<div class="section-heading">
+														<h4 class="ket_opportunity"></h4>
+														<h2 style="margin-top: 93px;">Saat Ini Tidak Ada Tiket Wisata</h2>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+			
+									<br>
+									<br><hr class="style-one" style="height: 1px; background-color: white;"><br>
+								</div>
+							</div>
+							<br><br>
+						</div>
+					</div>-->
+
+			<div class="container">
+				<div class="upcoming-shows-area section-padding-100">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+								<div class="section-heading">
+									<h4 class="ket_opportunity"></h4>
+									<h2>EVENT YANG AKAN DATANG</h2>
+									<hr class="style-one" style="height: 2px; background-color: #a4259b;"><br>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div *ngFor="let upEvnt of upComingVenue">
+								<div class="rec-event col-md-4 col-sm-6">
+									<div class="box-events-recommended" style="padding: 15px; border-radius: 15px;">
+										<div class="box-img-events-recommended show_detail" data-url="#"
+											  [ngStyle]="{ 'background-image': 'url(' + getBigBannerUrl + upEvnt.id + ')', 'height': '239.497px' }">
+									</div>
+									<div class="desc-event-recommended">
+										<ul class="dateAndplace">
+											<li><img style="width: 6%;" src="assets/tgl.png">
+												{{upEvnt.tanggalAwal | date:'dd MMM yyyy'}}
+												<!--{{upEvnt.smallBanner}}--> 
+											</li>
+											<li><img style="width: 6%;" src="assets/map02.png">
+												{{upEvnt.tempat}}
+											</li>
+											<li style="font-size: 18px;font-family: Montserrat,serif; line-height: 24px;">{{upEvnt.nama}}</li>
+										</ul>
+									</div>
+									<a style="color: white;" class="btn-buy-small btn-recommended"
+										(click)=toggleModel2();>Beli Tiket</a>
+									<!--(click)=checkAvailability(upEvnt.id);>Beli Tiket</a>-->
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div *ngIf="emptyEvent">
+						<div id="emptyTicket" style="height: 190px; border-radius: 15px;">
+							<div class="row">
+								<div class="col-12">
+									<div class="section-heading">
+										<h4 class="ket_opportunity"></h4>
+										<h2 style="margin-top: 93px;">Event Segera Hadir</h2>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="mobile-version" class="container">
+					<div class="upcoming-shows-area section-padding-100">
+
+
+						<div class="container">
+							<hr class="style-one" style="height: 2px; background-color: #a4259b;"><br>
+							<br><hr class="style-one" style="height: 1px; background-color: white;"><br>
+							<div class="row">
+								<div class="col-12">
+									<div class="section-heading">
+										<h2>EVENT YANG SUDAH LEWAT</h2>
+										<hr class="style-one" style="height: 2px; background-color: #a4259b;"><br>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div *ngFor="let item of lstVenueData">
+									<div class="col-12">
+										<div class="upcoming-shows-content">
+											<div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+												<div class="shows-date">
+													<img src="assets/bg-img/cidro002.jpeg">
+												</div>
+												<div class="shows-desc d-flex align-items-center">
+													<div class="shows-img">
+														<img src="assets/bg-img/banner-001.jpeg" alt="">
+													</div>
+
+													<div class="shows-name">
+														<h6>{{item.nama}}</h6>
+														<p><img src="assets/map02.png" style="width: 6%;">&nbsp;{{item.tempat}}</p>
+														<p><img src="assets/tgl.png" style="width: 6%;">&nbsp;{{item.tanggalAwal | date:'dd MMM yyyy'}}</p>
+													</div>
+												</div>
+												<a style="color: white;" class="btn-buy-small btn-recommended"
+													(click)=toggleModel();
+													[class.active]="showModelPanel">Beli Tiket</a>
+											</div>
+										</div>
+									</div>
+									<br><hr class="style-one" style="height: 1px; background-color: white;"><br>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="dekstop-version" class="container">
+					<br><hr class="style-one" style="height: 1px; background-color: white;"><br>
+					<div class="row">	
+						<div class="col-12">
+							<div class="section-heading">
+								<h2>EVENT YANG SUDAH LEWAT</h2>
+								<hr class="style-one" style="height: 2px; background-color: #a4259b;"><br>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12">
+						<div class="row">
+							<div *ngFor="let item of lstVenueData">
+								<div class="rec-event col-md-4 col-sm-6">
+									<div class="box-events-recommended">
+										<div class="box-img-events-recommended show_detail" data-url="#"
+											  [ngStyle]="{ 'background-image': 'url(' + getBigBannerUrl + item.id + ')', 'height': '239.497px' }">
+									</div>
+									<div class="desc-event-recommended">
+										<ul class="dateAndplace">
+											<li><img style="width: 6%;" src="assets/tgl.png">
+												{{item.tanggalAwal | date:'dd MMM yyyy'}}
+											</li>
+											<li><img style="width: 6%;" src="assets/map02.png">
+												{{item.tempat}}
+											</li>
+											<li style="font-size: 18px;font-family: Montserrat,serif; line-height: 24px;">{{item.nama}}</li>
+										</ul>
+									</div>
+									<a style="color: white;" class="btn-buy-small btn-recommended"
+										(click)="toggleModel()"
+										[class.active]="showModelPanel">Beli Tiket</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br><br>
+
+		<!-- The Modal -->
+	</div>
+	<hr class="style-one" style="margin-left: 200px;margin-right: 200px;height: 2px;">
+	<br>
+</div>
+
+<div class="box-logo-3rd">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="boxed-3rd">
+					<h5>Partner Eksklusif</h5>
+					<ul class="logo-3rd logo-3rd--exclusive">
+						<li>
+							<figure class="logo">
+								<img src="assets/bg-img/inspro.png" alt="">
+							</figure>
+						</li>
+						<li>
+							<figure class="logo">
+								<img src="assets/image/tiket_box/L2.jpg" alt="">
+							</figure>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="boxed-3rd">
+					<h5>Partner Tiket Offline</h5>
+					<ul class="logo-3rd logo-3rd--offline">
+						<li>
+							<figure class="logo">
+								<img src="assets/image/tiket_box/L2.jpg" alt="">
+							</figure>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="clearfix"></div>
+			<div class="col-md-6">
+				<div class="boxed-3rd">
+					<h5>Bank Transfer</h5>
+					<ul class="logo-3rd">
+						<li>
+							<figure class="logo">
+								<img src="assets/bank/bca.png" alt="">
+							</figure>
+						</li>
+						<li>
+							<figure class="logo">
+								<img src="assets/bank/bni.png" alt="">
+							</figure>
+						</li>
+						<!--						<li>
+													<figure class="logo">
+														<img src="assets/bank/mandiri.png" alt="">
+													</figure>
+												</li>-->
+						<li>
+							<figure class="logo">
+								<img src="assets/bank/bri.png" alt="">
+							</figure>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<br>
+<!--FOOTER PAGE-->
+<!--		<div class="footer-up">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="footer-row">
+							<a href="https://tiketindonesia.id" style="padding-top:0px;display:inline-block">
+								<img src="assets/tiketindo.png" alt="tiketindonesia"
+									  style="max-width: 315px;max-height:83px; ">
+							</a>
+							<div class="box-social">
+								<ul>
+									<li id="spasi" class="icon-margin-01">
+										<a href="https://www.facebook.com/tiketindo.id/?modal=admin_todo_tour" target="_blank">
+											<img src="assets/image/fb.png" alt="tiketapasaja.com">
+										</a>
+									</li>
+									<li id="spasi">
+										<a href="https://twitter.com/IndoTikId" target="_blank">
+											<img src="assets/image/tw.png" alt="tiketapasaja.com">
+										</a>
+									</li>
+									<li id="spasi">
+										<a href="https://www.instagram.com/tiket.indonesia/?hl=en" target="_blank">
+											<img src="assets/image/ig.png" alt="tiketapasaja.com">
+										</a>
+									</li>
+									<li id="spasi">
+										<a href="#" target="_blank">
+											<img src="assets/image/gm.png" alt="tiketapasaja.com">
+										</a>
+									</li>
+									<li class="icon-margin-02">
+										<a href="#" target="_blank">
+											<img src="assets/image/in.png" alt="tiketapasaja.com">
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>-->
+
+<img style="background-color: white; margin-top: 18px;" src="assets/footer-big.png">
+<div id="contacts-section" class="g-bg-black-opacity-0_9 g-color-white-opacity-0_8 g-py-60">
+	<div class="container">
+		<div class="row">
+			<!-- Footer Content -->
+			<div class="col-lg-3 col-md-6">
+				<div class="g-brd-white-opacity-0_8">
+					<h2 class="u-heading-v2__title h6 text-uppercase mb-0">Tentang Kami</h2>
+				</div>
+
+				<p>Tentang Kami</p>
+			</div>
+			<!-- End Footer Content -->
+
+			<!-- Footer Content -->
+			<div class="col-lg-3 col-md-6">
+				<div class="g-brd-white-opacity-0_8">
+					<h2 class="u-heading-v2__title h6 text-uppercase mb-0">Blog Website</h2>
+				</div>
+
+				<article>
+					<h3 class="h6 g-mb-2">
+						<a class="g-color-white-opacity-0_8" href="https://tiketindonesia.id/news/">Lenterne Festival de Paris</a>
+					</h3>
+					<div class="small">31 Agustus 2019</div>
+				</article>
+
+				<hr class="g-brd-white-opacity-0_1">
+
+				<article>
+					<h3 class="h6 g-mb-2">
+						<a class="g-color-white-opacity-0_8" href="#">Etnichestra 2019</a>
+					</h3>
+					<div class="small">12 Oktober 2019</div>
+				</article>
+				<hr class="g-brd-white-opacity-0_1">
+			</div>
+			<!-- End Footer Content -->
+
+			<!-- Footer Content -->
+			<div class="col-lg-3 col-md-6">
+				<div class="g-brd-white-opacity-0_8">
+					<h2 class="u-heading-v2__title h6 text-uppercase mb-0">Pembelian</h2>
+				</div>
+
+				<nav class="text-uppercase1">
+					<ul class="list-unstyled mb-0">
+						<li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+							<h4 class="h6 g-pr-20 mb-0">
+								<a class="g-color-white-opacity-0_8" href="#">Cara Pembelian</a>
+								<i class="fa fa-angle-right g-absolute-centered--y"></i>
+							</h4>
+						</li>
+						<li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+							<h4 class="h6 g-pr-20 mb-0">
+								<a class="g-color-white-opacity-0_8" href="https://tiketindonesia.id/tiketindo/confirm/0/email@mail.com">Konfirmasi</a>
+								<i class="fa fa-angle-right g-absolute-centered--y"></i>
+							</h4>
+						</li>
+						<li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+							<h4 class="h6 g-pr-20 mb-0">
+								<a class="g-color-white-opacity-0_8" href="#">Kerjasama Tiket Box</a>
+								<i class="fa fa-angle-right g-absolute-centered--y"></i>
+							</h4>
+						</li>
+						<li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
+							<h4 class="h6 g-pr-20 mb-0">
+								<a class="g-color-white-opacity-0_8" href="#">FAQ</a>
+								<i class="fa fa-angle-right g-absolute-centered--y"></i>
+							</h4>
+						</li>
+						<li class="g-pos-rel g-py-10">
+							<h4 class="h6 g-pr-20 mb-0">
+								<a class="g-color-white-opacity-0_8" href="https://www.instagram.com/etnichestra/?igshid=zdc5n96v4dp1">Hubungi Kami</a>
+								<i class="fa fa-angle-right g-absolute-centered--y"></i>
+							</h4>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<!-- End Footer Content -->
+
+			<!-- Footer Content -->
+			<div class="col-lg-3 col-md-6">
+				<div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8">
+					<h2 class="u-heading-v2__title h6 text-uppercase mb-0">Kontak Kami</h2>
+				</div>
+
+				<address class="g-bg-no-repeat g-font-size-12 mb-0">
+					<!-- Location -->
+					<div class="d-flex">
+						<div class="g-mr-10">
+							<span class="u-icon-v3 u-icon-size--xs">
+								<i class="fa fa-map-marker"></i>
+							</span>
+						</div>
+					</div>
+					<!-- End Location -->
+
+					<!-- Phone -->
+					<div class="d-flex">
+						<div class="g-mr-10">
+							<span class="u-icon-v3 u-icon-size--xs">
+								<i class="fa fa-phone"></i>
+							</span>
+						</div>
+					</div>
+					<!-- End Phone -->
+
+					<!-- Email and Website -->
+					<div class="d-flex">
+						<div class="g-mr-10">
+							<span class="u-icon-v3 u-icon-size--xs">
+								<i class="fa fa-globe"></i>
+							</span>
+						</div>
+						<p class="mb-0">
+							<a class="g-color-white-opacity-0_8"
+								href="panemu:indotik.panemu@gmail.com">indotik.panemu@gmail.com</a>
+							<br>
+						</p>
+					</div>
+					<!-- End Email and Website -->
+				</address>
+			</div>
+			<!-- End Footer Content -->
+		</div>
+	</div>
+</div>
+
+<div class="footer">
+	<p>COPYRIGHT © <a href="#" target="blank_space">panemu </a>{{today | date:'yyyy'}}</p>
+</div>
+
+</body>
+
+</html>

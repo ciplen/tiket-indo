@@ -1,0 +1,64 @@
+<ion-header>
+	<ion-navbar>
+		<!--<ion-title>Generate Ticket</ion-title>-->
+	</ion-navbar>
+</ion-header>
+<ion-content class="default-background">
+	<ion-card *ngIf="canGenerate">
+		<ion-card-header>Generate Ticket: </ion-card-header>
+		<form *ngIf="form" (ngSubmit)="generate()" [formGroup]="form">
+			<ion-list>
+				<ion-item>
+					<ion-label>Nama Event</ion-label>
+					<ion-select [(ngModel)]="model.venueId" formControlName="venueId" (ionChange)="getTicketType()">
+						<ion-option *ngFor="let item of lstVenue" value="{{item.id}}">{{item.nama}}</ion-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label>Tipe Tiket</ion-label>
+					<ion-select [(ngModel)]="model.ticketId" formControlName="ticketId">
+						<ion-option *ngFor="let item of lstType" value="{{item.id}}">{{item.type}}  (Rp.{{item.hargaPeriode1 | number}})</ion-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label>Nama</ion-label>
+					<ion-input [(ngModel)]="model.buyerName" formControlName="buyerName" placeholder="Sesuai Nama Kartu Identitas"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label>Email</ion-label>
+					<ion-input [(ngModel)]="model.buyerEmail" formControlName="buyerEmail" placeholder="Masukkan Valid Email"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label>Nomor HP</ion-label>
+					<ion-input [(ngModel)]="model.phone" formControlName="phone" type="number" placeholder="Pastikan Nomor Aktif"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label>Nomor ID</ion-label>
+					<ion-input [(ngModel)]="model.noKtp" formControlName="noKtp" type="number" placeholder="Sesuai Nomor Kartu Identitas"></ion-input>
+				</ion-item>
+			</ion-list>
+			<div text-center>
+				<button ion-button block [disabled]="form.invalid || saving">Generate</button>
+			</div>
+		</form>
+		<!--<ion-item *ngFor="let val of lstData">-->
+		<ion-card class="printable-area" id="printable-area" *ngIf="data">
+			<ion-item>
+				<ion-label>No ID</ion-label>
+				<ion-input editable="false" value="{{data.noKtp}}"></ion-input>
+			</ion-item>
+			<ion-item>
+				<!--<ion-card>-->
+				<ngx-qrcode [qrc-value] = "data.ticketToken">
+				</ngx-qrcode>
+				<button ion-button>Download QR</button>
+				<!--</ion-card>-->
+			</ion-item>
+		</ion-card>
+	</ion-card>
+	<div *ngIf="!canGenerate">
+		<ion-item>
+			<p>Anda tidak diijinkan mengakses menu ini.</p>
+		</ion-item>
+	</div>
+</ion-content>

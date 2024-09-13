@@ -1,0 +1,68 @@
+<div class="ribbon">
+	<div class="page-title">Dashboard Country</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="form-group row">
+			<label class="col-sm-12" style="text-align: left; margin-bottom: 4px; margin-top: 4px;">Filter Event</label>
+			<div class="col-sm-12">
+				<!-- <select class="form-control" name="event" (change)="onChange($event)" required> -->
+				<select class="form-control" name="event" [(ngModel)]="this.venueId" (change)="onChange($event)" required>
+					<option *ngFor="let event of lstEvent" [value]="event.id">{{event.nama}}</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Chart Section -->
+<div class="row">
+	<div class="col-md-6">
+		<div class="card mb-3">
+			<div class="card-header">Status Penjualan</div>
+			<div class="card-body">
+				<canvas baseChart 
+						  [data]="pieChartData"
+						  [colors]="pieColors"
+						  [labels]="pieChartLabels" 
+						  chartType="outlabeledPie"
+						  [options]="pieChartOptions"
+						  [plugins]="pieChartPlugins">
+			</canvas>
+		</div>
+	</div>
+</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card mb-3">
+			<div class="card-header">Data Berdasarkan Kota</div>
+			<div class="card-body">
+				<canvas baseChart 
+						  [data]="listCountKota"
+						  [colors]="pieColors2"
+						  [labels]="listKota" 
+						  chartType="outlabeledPie"
+						  [options]="pieChartOptions"
+						  [plugins]="pieChartPlugins">
+			</canvas>
+		</div>
+	</div>
+</div>
+<div class="col-md-6">
+	<div class="card mb-3">
+		<div class="card-header">Data Berdasarkan Umur</div>
+		<div class="card-body">
+			<canvas baseChart 
+					  [data]="listCountAge"
+					  [colors]="pieColors2"
+					  [labels]="listAge" 
+					  chartType="outlabeledPie"
+					  [options]="pieChartOptions"
+					  [plugins]="pieChartPlugins">
+		</canvas>
+	</div>
+</div>
+</div>
+</div>
+<!-- End of Chart Section -->
+<hr>

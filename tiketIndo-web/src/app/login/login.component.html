@@ -1,0 +1,28 @@
+<div class="login-page animate">
+	<div id="container-login">
+		<div id="title">
+			<img style="max-width: 80%" src="assets/tiketindo2.png" alt="" class="img-fluid logo-light"> 
+		</div>
+
+		<form (ngSubmit)="login($event, username.value, password.value)">
+			<div class="input">
+				<div class="input-addon">
+					<i class="material-icons">Username</i>
+				</div>
+				<input type="text" #username class="input-underline input-lg">
+			</div>
+
+			<div class="clearfix"></div>
+
+			<div class="input">
+				<div class="input-addon">
+					<i class="material-icons">Password</i>
+				</div>
+				<input type="password" #password class="input-underline input-lg">
+			</div>
+
+			<label style="color: black;">{{errormsg}}</label>
+			<button type="submit" class=" btn rounded-btn" >{{'login' | translate}} </button>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,60 @@
+<div class="inline">
+	<div  class="dropdown">
+		<button class="dropdown-toggle" (click)="toggleOpen()"><i class="icon-cog"></i>
+		</button>
+		<div #divDropdown class="dropdown-menu">
+
+			<div *ngIf="savedColumns" class="pnlTableConfig" style="display: inline-block;">
+				<div>
+					<div class="float-left" >
+						<label><input type="checkbox" (click)="toggleAll()" [checked]="allChecked"> Show All</label>
+						<a [style.visibility]="!selected || selected == savedColumns[savedColumns.length - 1] ? 'hidden': ''" (click)="down()" class="float-right"><i class="icon-down-big"></i></a>
+						<a [style.visibility]="!selected || selected == savedColumns[0] ? 'hidden': ''" (click)="up()" class="float-right"><i class="icon-up-big"></i>&nbsp;</a>
+						<ul class="list-column">
+							<li *ngFor="let clm of savedColumns; let rowNum=index" [class.selected]="selected == clm" (click)="selected = clm">
+								<input type="checkbox" (click)="toggle(rowNum)" [checked]="clm.visible">
+								<label>{{clm.name}}&nbsp;</label>
+							</li>
+						</ul>
+					</div>
+					<div *ngIf="srvMasterData" class="float-left">
+						<label>Template</label>
+						<table>
+							<tbody>
+								<tr *ngFor="let us of lstTemplate;">
+									<td><label class="" (click)="loadTemplate(us.name)">{{us.name}}</label></td>
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="float-right" (click)="removeTemplate(us.name)" title="Remove template"><i class="icon-trash-empty text-danger"></i></label></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="btn-group" role="group" >
+					<a (click)="toggleOpen()" class="btn btn-default">{{'close' | translate }}</a>
+					<a *ngIf="srvMasterData" (click)="showSaveDialog()" class="btn btn-default">{{'save.template' | translate }}</a>
+					<a (click)="reset()" class="btn btn-default">Reset</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <b-dialog title="{{'delete.template' | translate}}" [(shown)]="deleteDialogShow" (closed)="deleteDialogClosed()" [type]="'confirmation'">
+	<div class="modal-body">
+		<p innerHTML="{{'delete.confirmation' | translate}}"></p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary" (click)="deleteDialogAnswer('yes')">{{'yes' | translate }}</button>
+		<button type="button" class="btn btn-default" (click)="deleteDialogAnswer('no')">{{'no' | translate }}</button>
+	</div>
+</b-dialog>
+
+<b-dialog title="{{'save.template' | translate }}" [(shown)]="saveDialogShow" (closed)="saveDialogClosed()" [type]="'confirmation'">
+	<div class="modal-body">
+		{{'template.name' | translate }} <input  [(ngModel)]="templateName" maxlength="10">
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary" (click)="saveDialogAnswer('save')">{{'save'| translate}}</button>
+		<button type="button" class="btn btn-default" (click)="saveDialogAnswer('cancel')">{{'cancel' | translate }}</button>
+	</div>
+</b-dialog> -->

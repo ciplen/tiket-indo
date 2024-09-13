@@ -1,0 +1,70 @@
+:host {
+	position: relative;
+}
+
+:host .dropdown-menu {
+	font-size: 11px;
+	top:15px;
+	padding: 0;
+}
+
+.modal-body {
+	color: black;
+}
+
+input {
+	margin: 0;
+}
+.pnlTableConfig {
+	/*background-color: rgba(255,255,255,0.2);*/
+	/*border-radius: 5px;*/
+	padding: 10px;
+}
+.pnlTableConfig>div>div:nth-child(1) {
+	padding-right: 10px;
+}
+ul {
+	list-style: none;
+	height: 200px;
+	overflow: auto;
+	padding: 2px 20px 2px 2px;
+	border: 1px solid rgba(0,0,0,0.2);
+}
+
+li {
+	white-space: nowrap;
+}
+
+.selected {
+	background-color: rgba(0,0,0,0.1);
+}
+.inline {
+	display: inline;
+}
+
+label {
+	margin: 0;
+	font-weight: normal;
+}
+
+.btn-group .btn {
+	padding: 2px 4px;
+	font-size: 11px;
+}
+
+.dropdown-toggle {
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	float: left;
+	margin-right: 5px;
+	color: #6c757d;
+}
+
+.hint {
+	position: absolute;
+	top: 15px;
+	overflow: visible;
+	white-space: nowrap;
+	font-size: 10px;
+}

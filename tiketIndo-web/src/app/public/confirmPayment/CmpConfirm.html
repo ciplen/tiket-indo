@@ -1,0 +1,131 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Buy Ticket - TiketIndo</title>
+	</head>
+
+	<body>
+	<cmp-header></cmp-header>
+
+	<section class="hero-area">
+		<div class="hero-slides owl-carousel" style="display: block; margin-bottom: -480px;">
+			<!-- Single Hero Slide -->
+			<div class="single-hero-slide d-flex align-items-center justify-content-center" style="height: 610px;">
+				<!-- Img -->
+				<div class="slide-img bg-img" style="background-image: url(assets/bg-img/FG.png);"></div>
+
+			</div>
+
+		</div>
+		<!-- bg gradients -->
+		<div class="bg-gradients"></div>
+	</section>
+
+	<div class="container container-event">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="boxDetailEvent">
+					<div class="headDetailEvent">
+						<div class="row">
+							<div class="form-style-6">
+								<h1>Halaman Konfirmasi</h1>
+								<form>
+									<label class="control-label">ID Booking</label>
+									<input type="number" name="field1" placeholder="0" [(ngModel)]="idBooking"/>									
+									<label class="control-label">Email</label>
+									<input type="email" name="field2" placeholder="email@mail.com" [(ngModel)]="email"/>
+
+									<div class="form-group row">
+										<label style="margin-left: 15px;" class="control-label">Bukti Transfer</label>
+										<div class="col-sm-10">
+											<div class="container-content content-center-column">
+												<label class="hoverable" for="fileInput">
+													<img #imgConfirm [src]="url ? url : 'assets/cam.png'">
+												</label>
+												<br/>
+												<input id="fileInput" name="path_picture" type='file' (change)="onSelectFile($event)">
+											</div>
+											<span style="font-style: italic; color: red;">*Harus menyertakan Bukti Transfer.</span>
+										</div>
+									</div>
+
+
+									<div id="accordionExample" class="card">
+										<div class="card-header" id="headingOne">
+											<h2 class="mb-0">
+												<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+													#KETENTUAN PROTOKOL KESEHATAN PANDEMI COVID-19
+												</button>
+											</h2>
+										</div>
+
+										<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+											<div class="card-body">
+													<li>
+														Seluruh pengunjung wajib memastikan diri dalam kondisi sehat sebelum datang ke venue
+														Festival Lampion Jogja 2020-2021 Jika mengalami gejala seperti demam, batuk, pilek, nyeri
+														tenggorokan dan atau sesak nafas sebelum datang ke venue harap untuk memeriksakan diri
+														terlebih dahulu ke fasilitas pelayanan kesehatan, dan diwajibkan membawa surat keterangan
+														kesehatan.
+													</li>
+													<li>
+														Seluruh pengunjung wajib untuk selalu menggunakan masker dan sangat dianjurkan
+														diperkuat dengan menggunakan faceshield selama berada di venue Festival Lampion Jogja
+														2020-2021. Pengunjung yang tidak membawa dan menggunakan masker DILARANG masuk
+														ke venue dan tidak dapat dilakukan refund tiket.
+													</li>
+													<li>
+														Setiap pengunjung yang kedapatan melepas masker di venue Festival Lampion Jogja 2020-
+														2021 akan dikenakan denda sebesar Rp50.000 ,00.
+													</li>
+													<li>
+														Seluruh pengunjung diwajibkan untuk mencuci tangan dengan sabun dan air mengalir pada
+														saat akan memasuki venue acara. (Tempat cuci tangan sudah disediakan).
+													</li>
+													<li>
+														Seluruh pengunjung disarankan membawa hand sanitizer pribadi supaya dapat digunakan
+														untuk menjaga kebersihan tangan selama acara berlangsung.
+													</li>
+													<li>
+														Seluruh pengunjung diwajibkan untuk menjaga jarak dengan pengunjung lain minimal 1
+														meter.
+													</li>
+													<li>
+														Akan dilakukan pengecekan suhu tubuh pada saat di pintu masuk, dengan batas maksimal
+														suhu 37,5 derajat Celcius. Seluruh pengunjung yang kedapatan bersuhu tubuh di atas 37,5
+														derajat celcius DILARANG memasuki venue acara dan tidak dapat dilakukan refund tiket.
+													</li>
+											</div>
+										</div>
+									</div>
+									<hr><br><hr>
+
+
+									<button type="submit" routerLinkActive="router-link-active"
+											  (click)="confirm()"
+											  class="btn btn-primary btn-lg btn-block login-button"
+											  style="background: linear-gradient(to right, #cc1573, #5722a9);"
+											  [disabled]="emptyImg || saving"><i *ngIf="saving" class="animate-spin icon-ticket"></i> Konfirmasi Pembayaran</button>
+								</form>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="footer-area section-padding-100-0" style="background-color: #0c0527">
+		<!--		<div class="footer-img">
+					<img src="assets/bg-img/footer-img.png">
+				</div>-->
+
+		<div class="footer">
+			<p>COPYRIGHT © <a href="#">panemu</a></p>
+		</div>
+	</footer>
+</body>
+
+</html>

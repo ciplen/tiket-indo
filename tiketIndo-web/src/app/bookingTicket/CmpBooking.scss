@@ -1,0 +1,51 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Jul 19, 2019, 1:42:32 AM
+    Author     : Alfin <ahmad.alfin@panemu.com>
+*/
+
+.status-is-approved {
+	background: yellowgreen;
+}
+.status-is-canclled {
+	background: red;
+}
+.status-is-confirm {
+	background: #7874db;
+}
+
+.column-box {
+	float: left;
+	width: 25%;
+	padding: 0 10px;
+}
+.row-box {
+	margin: 0 -5px;
+}
+.card-status {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+	padding: 16px;
+	text-align: center;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+/* Clear floats after the columns */
+.row-box:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+  
+  /* Responsive columns */
+@media screen and (max-width: 600px) {
+	.column-box {
+	  width: 100%;
+	  display: block;
+	  margin-bottom: 20px;
+	}
+}

@@ -1,0 +1,282 @@
+
+.login-page {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: auto;
+	text-align: center;
+	color: #fff;
+	padding: 2em; 
+	background-size: 100% 100%;
+	background-color: whitesmoke;
+}
+.login-page .col-lg-4 {
+	padding: 0; }
+.login-page a {
+	cursor: pointer; }
+.login-page .input-lg {
+	height: 46px;
+	padding: 10px 16px;
+	font-size: 18px !important;
+	line-height: 1.3333333;
+	border-radius: 0; }
+
+.login-page .input-underline {
+	background: 0 0;
+	border: none;
+	box-shadow: none;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+	color: #FFF;
+	border-radius: 0; }
+.login-page .input-underline:focus {
+	border-bottom: 2px solid #fff;
+	box-shadow: none; }
+.login-page .rounded-btn {
+	-webkit-border-radius: 50px;
+	border-radius: 7	px;
+	color: #ffffff;
+	width: 70%;
+	background: rgb(63, 24, 168);
+	font-size: 18px;
+	line-height: 40px;
+	margin-top: 35px;
+	text-shadow: none;
+	padding: 0 25px; }
+.login-page .rounded-btn:hover, .login-page .rounded-btn:focus, .login-page .rounded-btn:active, .login-page .rounded-btn:visited {
+	color: white;
+	border: 2px solid white;
+	outline: none; }
+.login-page h1 {
+	font-weight: 300;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-size: 36px; }
+.login-page h1 small {
+	color: rgba(255, 255, 255, 0.7); }
+.login-page .form-group input::-webkit-input-placeholder {
+	color: rgba(255, 255, 255, 0.6) !important; }
+.login-page .form-group input:-moz-placeholder {
+	/* Firefox 18- */
+	color: rgba(255, 255, 255, 0.6) !important; }
+.login-page .form-group input::-moz-placeholder {
+	/* Firefox 19+ */
+	color: rgba(255, 255, 255, 0.6) !important; }
+.login-page .form-group input:-ms-input-placeholder {
+	color: rgba(255, 255, 255, 0.6) !important; }
+.login-page .form-content {
+	padding: 1em 0; }
+
+#recaptcha {
+	width: 304px;
+	margin: 0 auto;
+}
+
+.header {
+	display: block;
+	min-height: 150px;
+	padding: 3em 0 0;
+	text-align: center;
+}
+
+.header h2 {
+	background-color: #2e2855;
+	opacity: 0.6;
+	font-size: 2rem;
+	padding: 10px 0;
+	font-weight: 700;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Raleway', sans-serif;
+	color: #F2F2F2;
+}
+
+#container-login {
+	background-color: #ffffff;
+	position: relative;
+	top: 20%;
+	margin: auto;
+	width: 340px;
+	height: 445px;
+	border-radius: 0.35em;
+	box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+	text-align: center;
+}
+
+#container-register {
+	background-color: #1D1F20;
+	position: relative;
+	top: 20%;
+	margin: auto;
+	width: 340px;
+	height: 480px;
+	border-radius: 0.35em;
+	box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+	text-align: center;
+}
+
+#title {
+	position: relative;
+	background-color: #3f18a8;
+	width: 100%;
+	padding: 20px 0px;
+	font-size: 22px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lock {
+	position: relative;
+	top: 2px;
+}
+
+.input {
+	margin: auto;
+	width: 240px;
+	border-radius: 4px;
+	background-color: #3f18a8;
+	padding: 8px 0px;
+	margin-top: 15px;
+}
+
+.input-addon {
+	float: left;
+	background-color: #3f18a8;
+	border: 1px solid #3f18a8;
+	padding: 4px 8px;
+	border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+input[type=checkbox] {
+	cursor: pointer;
+}
+
+input[type=text] {
+	color: #949494;
+	margin: 0;
+	background-color: #373b3d;
+	border: 1px solid #373b3d;
+	padding: 6px 0px;
+	border-radius: 3px;
+}
+
+input[type=text]:focus {
+	border: 1px solid #373b3d;
+}
+
+input[type=password] {
+	color: #949494;
+	margin: 0;
+	background-color: #373b3d;
+	border: 1px solid #373b3d;
+	padding: 6px 0px;
+	border-radius: 3px;
+}
+
+input[type=password]:focus {
+	border: 1px solid #373b3d;
+}
+
+input[type=email] {
+	color: #949494;
+	margin: 0;
+	background-color: #373b3d;
+	border: 1px solid #373b3d;
+	padding: 6px 0px;
+	border-radius: 3px;
+}
+
+input[type=email]:focus {
+	border: 1px solid #373b3d;
+}
+
+.forgot-password {
+	position: relative;
+	bottom: 0%;
+}
+
+.forgot-password a:link {
+	color: #C1C3C6;
+	text-decoration: none;
+}
+
+.forgot-password a:visited {
+	color: #C1C3C6;
+	text-decoration: none;
+}
+
+.forgot-password a:hover {
+	color: #FFF;
+	transition: color 1s;
+}
+
+.privacy {
+	margin-top: 5px;
+	position: relative;
+	font-size: 12px;
+	bottom: 0%;
+}
+
+.privacy a:link {
+	color: #949494;
+	text-decoration: none;
+}
+
+.privacy a:visited {
+	color: #949494;
+	text-decoration: none;
+}
+
+.privacy a:hover {
+	color: #C1C3C6;
+	transition: color 1s;
+}
+
+*:focus {
+	outline: none;
+}
+
+.remember-me {
+	margin: 10px 0;
+}
+
+input[type=submit] {
+	padding: 6px 25px;
+	background: #373E4A;
+	color: #C1C3C6;
+	font-weight: bold;
+	border: 0 none;
+	cursor: pointer;
+	border-radius: 3px;
+}
+
+.register {
+	margin: auto;
+	padding: 16px 0;
+	text-align: center;
+	margin-top: 40px;
+	width: 85%;
+	border-top: 1px solid #C1C3C6;
+}
+
+.clearfix {
+	clear: both;
+}
+
+#register-link {
+	margin-top: 10px;
+	padding: 6px 25px;
+	background: #373E4A;
+	color: #C1C3C6;
+	font-weight: bold;
+	border: 0 none;
+	cursor: pointer;
+	border-radius: 3px;
+}
+body {
+	background-color: #303641;
+}

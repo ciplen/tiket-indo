@@ -1,0 +1,147 @@
+<div class="ribbon">
+	<div class="page-title">Ticket Maintenance</div>
+</div>
+<div *ngIf="model" class="card">
+	<div class="card-body">
+		<form (ngSubmit)="onSubmit(myForm.controls)" #myForm="ngForm">
+
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">Nama Event</label>
+				<div class="col-sm-4">
+					<select class="form-control" [(ngModel)]="model.venueId" required name="venueId">
+						<option value=""></option>
+						<option *ngFor="let item of lstVenue" [value]="item.id">{{item.nama}}</option>
+					</select>
+					<span *ngIf="formErrors.venueId" class="validation-message">{{ formErrors.venueId.key | translate:formErrors.venueId.param}}</span>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">Tipe Tiket</label>
+				<div class="col-sm-4">
+					<input class="form-control" [(ngModel)]="model.type" name="type" required>
+					<span *ngIf="formErrors.type" class="validation-message">{{ formErrors.type.key | translate:formErrors.type.param}}</span>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">Keterangan Tiket</label>
+				<div class="col-sm-4">
+					<input class="form-control" [(ngModel)]="model.keterangan" name="keterangan" required>
+					<span *ngIf="formErrors.keterangan" class="validation-message">{{ formErrors.keterangan.key | translate:formErrors.keterangan.param}}</span>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">Amount</label>
+				<div class="col-sm-4">
+					<input class="form-control" [(ngModel)]="model.amount" name="amount" required>
+					<span *ngIf="formErrors.amount" class="validation-message">{{ formErrors.amount.key | translate:formErrors.amount.param}}</span>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">Diskon Tiket</label>
+				<div class="col-sm-1">
+					<input class="form-control" type="number" [(ngModel)]="model.diskon" name="diskon" maxlength="2">
+				</div>
+				<span style="font-style: italic; color: red;" [hidden]="bigBannerSelected">*Diskon Tiket dari 1 - 99 %</span>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">Minimal Order</label>
+				<div class="col-sm-1">
+					<input class="form-control" [(ngModel)]="model.minOrder" name="minOrder">
+				</div>
+				<span style="font-style: italic; color: red;" [hidden]="bigBannerSelected">*Minimal pembelian tiket</span>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">Tanggal Periode 1</label>
+				<div class="col-sm-4">
+					<!--					<input class="form-control" matInput [matDatepicker]="tanggalPeriode1" [(ngModel)]="model.tanggalPeriode1" name="tanggalPeriode1" 
+												 (focus)="tanggalPeriode1.open()" placeholder="Pilih Tanggal" required>
+												 <mat-datepicker #tanggalPeriode1></mat-datepicker>-->
+					<p-calendar class="form-control" name="tanggalPeriode1" [(ngModel)]="model.tanggalPeriode1" placeholder="dd-mm-yyyy"  dateFormat="dd-mm-yy" required></p-calendar>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">Harga Periode 1</label>
+				<div class="col-sm-4">
+					<input class="form-control" [(ngModel)]="model.hargaPeriode1" name="hargaPeriode1" required>
+					<span *ngIf="formErrors.hargaPeriode1" class="validation-message">{{ formErrors.hargaPeriode1.key | translate:formErrors.hargaPeriode1.param}}</span>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">Tanggal Periode 2</label>
+				<div class="col-sm-4">
+					<!--					<input class="form-control" matInput [matDatepicker]="tanggalPeriode2" [(ngModel)]="model.tanggalPeriode2" name="tanggalPeriode2" 
+												 (focus)="tanggalPeriode2.open()" placeholder="Pilih Tanggal" required>
+												 <mat-datepicker #tanggalPeriode2></mat-datepicker>-->
+					<p-calendar class="form-control" name="tanggalPeriode2" [(ngModel)]="model.tanggalPeriode2" placeholder="dd-mm-yyyy"  dateFormat="dd-mm-yy"></p-calendar>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">Harga Periode 2</label>
+				<div class="col-sm-4">
+					<input class="form-control" [(ngModel)]="model.hargaPeriode2" name="hargaPeriode2">
+					<span *ngIf="formErrors.hargaPeriode2" class="validation-message">{{ formErrors.hargaPeriode2.key | translate:formErrors.hargaPeriode2.param}}</span>
+				</div>
+			</div>
+
+			<!--			<div class="form-group row">
+							<label class="col-sm-2  col-form-label">Tanggal Periode 3</label>
+							<div class="col-sm-4">
+													<input class="form-control" matInput [matDatepicker]="tanggalPeriode3" [(ngModel)]="model.tanggalPeriode3" name="tanggalPeriode3" 
+															 (focus)="tanggalPeriode3.open()" placeholder="Pilih Tanggal" required>
+															 <mat-datepicker #tanggalPeriode3></mat-datepicker>
+								<p-calendar class="form-control" name="tanggalPeriode3" [(ngModel)]="model.tanggalPeriode3" placeholder="dd-mm-yyyy"  dateFormat="dd-mm-yy"></p-calendar>
+							</div>
+						</div>-->
+			<!--			<div class="form-group row">
+							<label class="col-sm-2  col-form-label">Harga Periode 3</label>
+							<div class="col-sm-4">
+								<input class="form-control" [(ngModel)]="model.hargaPeriode3" name="hargaPeriode3">
+								<span *ngIf="formErrors.hargaPeriode3" class="validation-message">{{ formErrors.hargaPeriode3.key | translate:formErrors.hargaPeriode3.param}}</span>
+							</div>
+						</div>-->
+
+			<!--			<div class="form-group row">
+							<label class="col-sm-2  col-form-label">Tanggal Periode 4</label>
+							<div class="col-sm-4">
+													<input class="form-control" matInput [matDatepicker]="tanggalPeriode4" [(ngModel)]="model.tanggalPeriode4" name="tanggalPeriode4" 
+															 (focus)="tanggalPeriode4.open()" placeholder="Pilih Tanggal" required>
+															 <mat-datepicker #tanggalPeriode4></mat-datepicker>
+								<p-calendar class="form-control" name="tanggalPeriode4" [(ngModel)]="model.tanggalPeriode4" placeholder="dd-mm-yyyy"  dateFormat="dd-mm-yy"></p-calendar>
+							</div>
+						</div>-->
+			<!--			<div class="form-group row">
+							<label class="col-sm-2  col-form-label">Harga Periode 4</label>
+							<div class="col-sm-4">
+								<input class="form-control" [(ngModel)]="model.hargaPeriode4" name="hargaPeriode4">
+								<span *ngIf="formErrors.hargaPeriode4" class="validation-message">{{ formErrors.hargaPeriode4.key | translate:formErrors.hargaPeriode4.param}}</span>
+							</div>
+						</div>-->
+
+			<!--			<div class="form-group row">
+							<label class="col-sm-2  col-form-label">Tanggal Periode 5</label>
+							<div class="col-sm-4">
+													<input class="form-control" matInput [matDatepicker]="tanggalPeriode5" [(ngModel)]="model.tanggalPeriode5" name="tanggalPeriode5" 
+															 (focus)="tanggalPeriode5.open()" placeholder="Pilih Tanggal" required>
+															 <mat-datepicker #tanggalPeriode5></mat-datepicker>
+								<p-calendar class="form-control" name="tanggalPeriode5" [(ngModel)]="model.tanggalPeriode5" placeholder="dd-mm-yyyy"  dateFormat="dd-mm-yy"></p-calendar>
+							</div>
+						</div>-->
+			<!--			<div class="form-group row">
+							<label class="col-sm-2  col-form-label">Harga Periode 5</label>
+							<div class="col-sm-4">
+								<input class="form-control" [(ngModel)]="model.hargaPeriode5" name="hargaPeriode5">
+								<span *ngIf="formErrors.hargaPeriode5" class="validation-message">{{ formErrors.hargaPeriode5.key | translate:formErrors.hargaPeriode5.param}}</span>
+							</div>
+						</div>-->
+
+			<div class="form-group row">
+				<div class="col-sm-2 offset-sm-2">
+					<button class="btn btn-default" [disabled]="!myForm.form.valid" (click)="onSubmit()">{{'save' | translate}}</button>
+					<a class="btn btn-default ml-2" routerLink="../">{{'back' | translate}}</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,207 @@
+<div class="ribbon">
+	<div class="page-title">Booking Ticket</div>
+</div>
+<!-- Counter Section -->
+<div class="card mb-3">
+	<!-- <div class="card-header">{{'counter.booking' | translate}}</div> -->
+	<div class='card-body'>
+		<div class="form-group row">
+			<label class="col-sm-2" style="text-align: center; margin-bottom: 4px; margin-top: 4px;">{{criteria.venueId.label | translate}}</label>
+			<div class="col-sm-10">
+				<!-- <select class="form-control" name="event-sort" (change)="onChange($event)" required> -->
+				<!-- <select class="form-control" [(ngModel)]="criteria.venueId.value" name="event" (change)="reload()" required> -->
+				<select class="form-control" [(ngModel)]="criteria.venueId.value" name="event" (change)="onChange($event)" required>
+					<option *ngFor="let event of lstEvent" [value]="event.id">{{event.nama}}</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End of Counter Section -->
+<!-- Counter Section -->
+<div class="card mb-3">
+	<div class="card-header">{{'counter.booking' | translate}}</div>
+	<div class='card-body'>
+		<div class="row-box">
+			<!-- <div *ngFor="let countBook of lstCounter">
+				<div class="column-box">
+					<div class="card-status" [style.background-color]="getColorClass(countBook.status)">{{countBook.status}} = {{countBook.totalCount}}</div>
+				</div>
+			</div> -->
+			<div class="column-box">
+				<div class="card-status" style="background-color: yellowgreen;">APPROVED = {{this.countApproved}}</div>
+			</div>
+			<div class="column-box">
+				<div class="card-status" style="background-color: red;">CANCELED = {{this.countCanceled}}</div>
+			</div>
+			<div class="column-box">
+				<div class="card-status" style="background-color: #7874db;">CONFIRM = {{this.countConfirm}}</div>
+			</div>
+			<div class="column-box">
+				<div class="card-status" style="background-color: #f1f1f1;">PENDING = {{this.countPending}}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End of Counter Section -->
+<div class="card mb-3">
+	<div class="card-header" (click)="expandCollapse('#pnlBody')">{{'search.criteria' | translate}} <span *ngIf="searchLabel" class="search-cue">{{searchLabel}}</span>
+		<div class="float-right">
+			<a title="{{'help' | translate}}" routerLink="/home/help" class="mr-2">
+				<i class="icon-question-circle-o"></i>
+			</a>
+			<a role="button" data-toggle="collapse" href="#pnlBody" aria-expanded="false" aria-controls="collapseExample">
+				<i class="fa toggle-expand"></i>
+			</a>
+		</div>
+	</div>
+	<div class="card-body collapse show" id="pnlBody">
+		<div >
+			<!-- <div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.venueId.label | translate}}</label>
+				<div class="col-sm-4">
+					<select class="form-control" [(ngModel)]="criteria.venueId.value" name="event" (change)="reload()" required>
+						<option *ngFor="let event of lstEvent" [value]="event.id">{{event.nama}}</option>
+					</select>
+				</div>
+			</div> -->
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.nama.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.nama.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.noKtp.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.noKtp.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.rekTujuan.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.rekTujuan.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.status.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.status.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.noRek.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.noRek.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.kodeUnik.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.kodeUnik.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.email.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.email.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.typeTicket.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.typeTicket.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{criteria.modifiedBy.label | translate}}</label>
+				<div class="col-sm-4">
+					<input [(ngModel)]="criteria.modifiedBy.value" (keyup)="textChange($event)" class="form-control">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{'Start Date' | translate}}</label>
+				<div class="col-sm-4">
+					<p-calendar class="form-control" [(ngModel)]="strDate" placeholder="dd-mm-yyyy"  dateFormat="dd-mm-yy" (change)="reload()"></p-calendar>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2  col-form-label">{{'End Date' | translate}}</label>
+				<div class="col-sm-4">
+					<p-calendar class="form-control" [(ngModel)]="endDate" placeholder="dd-mm-yyyy"  dateFormat="dd-mm-yy" (change)="reload()"></p-calendar>
+				</div>
+			</div>
+			<div class="form-group row mb-0">
+				<div class="col-sm-2 offset-sm-2">
+					<button (click)="reloadFirstPage()" type="button" class="btn btn-default"><i class="fa fa-search"></i> {{'search' | translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="tableData" class="card">
+	<div class="card-header">
+		<p-table-helper #tableHelper
+			[srvMasterData]="srvMasterData"
+			[table]="myTable" 
+			(sort)="onSort($event)" [templateKey]="prefix" 
+			[rows]="tableData.rows"></p-table-helper>
+		{{'search.result' | translate}}
+		<div class="float-right">
+			<div *ngIf="canMaintain || isApprover" class="btn-group p-pagination mr-1">
+				<button title="{{'Bukti' | translate}}" type="button" class="btn btn-default btn-sm text-danger" (click)="buktiTrans($even)" [disabled]="noRowSelected"><i class="icon-ticket"></i>Cek Bukti Transfer</button>
+
+				<button title="{{'Approve' | translate}}" type="button" class="btn btn-default btn-sm text-danger" (click)="approve()" [disabled]="noRowSelected"><i class="icon-ticket"></i>Approve</button>
+				<a title="{{'export' | translate}}" class="btn btn-default btn-sm mr-1" (click)="exportData()"><i class="icon-file-excel"></i>Export</a>
+				<a title="{{'Export All' | translate}}" class="btn btn-default btn-sm mr-1" (click)="exportAllData()"><i class="icon-file-excel"></i>Export All</a>
+			</div>
+			<p-pagination [paginationObject]="paginationObject" (reload)="reload()" class="ml1"></p-pagination>
+		</div>
+	</div>
+	<div class="card-body">
+		<ngx-datatable #myTable class="material" [style.height]="tableHeight"
+			[reorderable]="false"
+			[scrollbarV]="true"
+			[scrollbarH]="true"
+			[rows]='rows'
+			[selected]="selected"
+			[rowClass]="getRowClass"
+			[selectionType]="'single'"
+			(select)="onSelect($event)"
+			[externalSorting]="true">
+			<ngx-datatable-column prop="{{'number' | translate}}" [sortable]="false">
+				<ng-template let-rowIndex='rowIndex' ngx-datatable-cell-template>
+					{{rowIndex + 1 + paginationObject.startIndex}}
+				</ng-template>
+			</ngx-datatable-column>
+			<ngx-datatable-column prop="nama" name="Nama"></ngx-datatable-column>
+			<ngx-datatable-column prop="noKtp" name="No Identitas"></ngx-datatable-column>
+			<ngx-datatable-column prop="noTelepon" name="Nomor HP"></ngx-datatable-column>
+			<ngx-datatable-column prop="umur" name="Umur"></ngx-datatable-column>
+			<ngx-datatable-column prop="kotaAsal" name="Umur"></ngx-datatable-column>
+			<ngx-datatable-column prop="email" name="Email"></ngx-datatable-column>
+			<ngx-datatable-column prop="event" name="Event"></ngx-datatable-column>
+			<ngx-datatable-column prop="id" name="Kode Pesanan"></ngx-datatable-column>
+			<ngx-datatable-column prop="typeTicket" name="Type Ticket"></ngx-datatable-column>
+			<ngx-datatable-column prop="rekTujuan" name="Rek Transfer"></ngx-datatable-column>
+			<ngx-datatable-column prop="noRek" name="No Rek"></ngx-datatable-column>
+			<ngx-datatable-column prop="harga" name="Harga"></ngx-datatable-column>
+			<ngx-datatable-column prop="kodeUnik" name="Kode Unik"></ngx-datatable-column>
+			<ngx-datatable-column prop="status" name="Status"></ngx-datatable-column>
+			<ngx-datatable-column prop="modifiedBy" name="Modified By"></ngx-datatable-column>
+			<ngx-datatable-column prop="createdDate" name="Created Date">
+				<ng-template let-row="row" ngx-datatable-cell-template>
+					{{row.createdDate | date:'dd MMM yyyy HH:mm:ss'}}
+				</ng-template>
+			</ngx-datatable-column>
+			<ngx-datatable-column prop="modifiedDate" name="Modified Date">
+				<ng-template let-row="row" ngx-datatable-cell-template>
+					{{row.modifiedDate | date:'dd MMM yyyy HH:mm:ss'}}
+				</ng-template>
+			</ngx-datatable-column>
+		</ngx-datatable>
+	</div>
+</div>

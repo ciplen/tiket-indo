@@ -1,0 +1,10 @@
+<div class="btn-group p-pagination mr-1">
+	<button type="button" title="{{'first.page' | translate}}" class="btn btn-default btn-sm" (click)="first()" [disabled]="disablePrev"><i class="icon-angle-double-left"></i></button>
+	<button type="button" title="{{'previous' | translate}}" class="btn btn-default btn-sm" (click)="prev()" [disabled]="disablePrev"><i class="icon-angle-left"></i></button>
+	<select [(ngModel)]="page"  (ngModelChange)="resetPage()" class="btn btn-default btn-sm"  [disabled]="paginationObject.totalRows === 0">
+		<option  *ngFor="let number of lstPage">{{number + 1}}</option>
+	</select>
+	<button type="button" title="{{'next' | translate}}" class="btn btn-default btn-sm" (click)="next()" [disabled]="disableNext"><i class="icon-angle-right"></i></button>
+	<button type="button" title="{{'last.page' | translate}}" class="btn btn-default btn-sm" (click)="last()" [disabled]="disableNext"><i class="icon-angle-double-right"></i></button>
+</div>
+<span class="label label-info" title="{{'rows.total' | translate}} {{ paginationObject.totalRows}}&#10;{{'line.per.page' | translate}} {{ paginationObject.maxRows }}">{{paginationObject.totalRows | number}}</span>

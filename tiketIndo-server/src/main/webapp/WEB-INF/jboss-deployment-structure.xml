@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<deployment>
+		<exclusions>
+		</exclusions>
+		<dependencies>
+			<!--Use libraries provided by wildfly. This way we can exclude the library from war file-->
+			<module name="org.apache.commons.io" services="import"/>
+			<module name="com.sun.xml.bind" services="import"/>
+			<module name="org.jsoup" services="import"/>
+			<module name="org.apache.commons.lang" services="import"/>
+			<module name="org.apache.xalan" services="import"/>
+			<module name="com.google.guava" services="import"/>
+			<module name="javax.enterprise.concurrent.api" services="import"/>
+		</dependencies>
+	</deployment>
+</jboss-deployment-structure>

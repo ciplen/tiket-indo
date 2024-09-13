@@ -1,0 +1,249 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Buy Ticket - TiketIndo</title>
+	</head>
+
+	<body>
+	<cmp-header></cmp-header>
+
+	<section class="hero-area">
+		<div class="hero-slides owl-carousel" style="display: block; margin-bottom: -480px;">
+			<!-- Single Hero Slide -->
+			<div id="img-big">
+				<div class="single-hero-slide d-flex align-items-center justify-content-center">
+					<!-- <img class="slide-img bg-img" src="assets/bg-img/bg-landing.png"> -->
+					<img class="slide-img bg-im" [src]="getSmallBannerUrl">
+				</div>
+			</div>
+			<div id="img-big-small">
+				<div class="single-hero-slide d-flex align-items-center justify-content-center">
+					<div class="slide-img bg-img-small" [ngStyle]="{ 'background-image': 'url(' + getSmallBannerUrl + ')'}"></div>
+					<!-- <div class="slide-img bg-img-small" style="background-image: url(assets/bg-img/buyTic.png);"></div> -->
+				</div>
+			</div>
+
+		</div>
+		<!-- bg gradients -->
+		<div class="bg-gradients"></div>
+	</section>
+	<div id="toggle">
+		<div class="sweet-overlay" tabindex="-1" style="opacity: 1.46;display: block;"></div>
+		<div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="false" data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="false" data-animation="pop" data-timer="null" style="display: block; margin-top: -150px;">
+			<div class="sa-icon sa-error" style="display: none;">
+				<span class="sa-x-mark">
+					<span class="sa-line sa-left"></span>
+					<span class="sa-line sa-right"></span>
+				</span>
+			</div>
+			<div class="sa-icon sa-warning" style="display: none;">
+				<span class="sa-body"></span>
+				<span class="sa-dot"></span>
+			</div>
+			<div class="sa-icon sa-info" style="display: none;"></div>
+			<div class="sa-icon sa-success" style="display: none;">
+				<span class="sa-line sa-tip"></span>
+				<span class="sa-line sa-long"></span>
+
+				<div class="sa-placeholder"></div>
+				<div class="sa-fix"></div>
+			</div>
+			<div class="sa-icon sa-custom" style="display: none;"></div>
+			<h2>Perhatian</h2>
+			<p style="display: block;">SETELAH MELAKUKAN PEMBAYARAN JANGAN LUPA KONFIRMASI PEMBAYARAN ANDA SESUAI BATAS WAKTU YANG TELAH DITENTUKAN. <br>LINK ATAU TOMBOL KONFIRMASI ADA DI INVOICE YANG KAMI KIRIM KE EMAIL ANDA.<br></p>
+			<div class="sa-button-container">
+				<button class="cancel" tabindex="2" style="display: none;">Cancel</button>
+				<button (click)="alert()" class="confirm" tabindex="1" style="background-color: rgb(85, 126, 218); box-shadow: rgba(221, 107, 85, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">Lanjutkan</button>
+			</div>
+		</div>
+	</div>
+
+	<div *ngIf="allData" class="container container-event">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="boxDetailEvent">
+					<div class="headDetailEvent">
+						<div class="row">
+							<div class="col-md-4">
+								<figure class="poster-events">
+									<a href="assets/bg-img/banner-001.jpeg" class="show_popup" rel="prettyPhoto">
+										<img class="center-img"  [src]="getBigBannerUrl" >
+									</a>
+								</figure>
+								<div class="col-md-12" style="padding: 14px;"></div>
+							</div>
+							<div class="col-md-8" style="color: white;">
+								<h3 style="color: white; margin-bottom: 15px;">
+									{{allData[0].namaEvent}}
+								</h3>
+								<h5 class="child-tittle" style="color: white; margin-top: -10px;">{{tem}}</h5>
+								<ul class="dateAndplace">
+									<li><i class="zmdi zmdi-pin"></i>
+										<b>
+											<h6 class="size-widht" style="color: white"><img src="assets/map.png">
+												&nbsp;{{allData[0].tempat}}
+											</h6>
+										</b>
+									</li>
+									<li><i class="zmdi zmdi-calendar-alt"></i>
+										<h6 class="size-widht" style="color: white"><img src="assets/tgl02.png">
+											&nbsp;{{allData[0].tanggalAwal | date:'mediumDate'}}
+										</h6>
+									</li>
+								</ul>
+								<!--								<a *ngIf="id == 3" class="button button-border button-rounded button-leaf" (click)="toggleModel()"
+																	[class.active]="showModelPanel">View Layout</a>-->
+								<div class="listCategoryEvent">
+									<!--<label>Kategori Tiket</label>-->
+									<span class="info-ticket">
+										<i class="zmdi zmdi-notifications"></i>
+									</span> 
+
+
+									<div id="dekstop-version" class="table-responsive" style="overflow-x:auto;">
+										<label>Kategori Tiket</label>
+										<table class="table table-mobile" style="width: 100%;color: white;">
+											<thead>
+												<tr>
+													<th>Tiket</th>
+													<th>Harga</th>
+													<!--<th> </th>-->
+													<th> </th>
+													<th>Keterangan</th>
+													<th></th>
+												</tr>
+												<!--												<tr>
+																									<th></th>
+																									<th>Exclude Goverment Tax 10%</th>
+																									<th> </th>
+																									<th></th>
+																									<th></th>
+																								</tr>-->
+											</thead>
+											<tbody>
+											<tbody *ngFor="let value of allData">
+												<tr style="background-color: #8080ff">
+													<td>{{value.type}}</td>
+													<td>Rp.{{value.hargaPeriode1 | number:'.0-2' }}</td>
+													<td *ngIf="value.type == 'Single'" style="width: 89px;"> <s>Rp.50.000</s></td>
+													<td *ngIf="value.type == 'Single Lampion'" style="width: 89px;"> <s>Rp.80.000</s></td>
+													<td *ngIf="value.type == 'Couple Lampion'" style="width: 89px;"> <s>Rp.120.000</s></td>
+													<td *ngIf="value.type == 'Lampion Tambahan'" style="width: 89px;"></td>
+													<td>{{value.keterangan}}</td>
+													<td>
+														<button *ngIf="value.amount > value.jumlahTerjual" (click)="checkAvailability(value.id)" type="button" style="width: 70px; background-color:#fed346ff; color: white;"
+															class="btn">Beli Tiket</button>
+														<button *ngIf="value.amount<=value.jumlahTerjual" type="button" disabled=""
+															class="btn" style="background-color:#f5eefd;">Soldout</button>
+													</td>
+												</tr>
+										</table>
+										<span style="font-style: italic; color: red;">*Harga diatas BELUM TERMASUK pajak 10%</span><br>
+										<span style="font-style: italic; color: red;">*Harga diatas selama Periode pembelian Tanggal 1 Desember 2020 sampai 30 Desember 2020.</span>
+									</div>
+
+
+									<div id="mobile-version" class="container">
+										<div class="upcoming-shows-area">
+											<div class="container">
+												<br><hr class="style-one" style="height: 1px; background-color: white;"><br>
+												<div class="row">
+													<div class="col-12">
+														<div class="section-heading">
+															<h2>KATEGORI TIKET</h2>
+															<hr class="style-one" style="height: 2px; background-color: #a4259b;"><br>
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+													<div *ngFor="let value of allData">
+														<div class="col-12">
+															<div class="upcoming-shows-content">
+																<div class="single-upcoming-shows d-flex align-items-center flex-wrap">
+																	<!--																	<div class="shows-date">
+																																			<img src="assets/bg-img/cidro002.jpeg">
+																																		</div>-->
+																	<div class="shows-desc d-flex align-items-center">
+																		<!--																		<div class="shows-img">
+																																					<img src="assets/bg-img/banner-001.jpeg" alt="">
+																																				</div>-->
+
+																		<div class="shows-name">
+																			<h6>Jenis Tiket : {{value.type}}</h6>
+																			<p>Harga : &nbsp;Rp.{{value.hargaPeriode1}}</p><br>
+																			<p>{{value.keterangan}}</p>
+
+<!--																			<div id="accordionExample" class="card">
+																				<div class="card-header" id="headingOne">
+																					<h2 class="mb-0">
+																						<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+																							Keterangan Tiket
+																						</button>
+																					</h2>
+																				</div>
+
+																				<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+																					<div class="card-body">
+																						<td></td>
+
+																					</div>
+																				</div>
+																			</div>-->
+
+
+																		</div>
+
+
+
+
+
+
+
+																	</div>
+																	<button *ngIf="value.amount > value.jumlahTerjual" (click)="checkAvailability(value.id)" type="button" style="width: 70px; background-color:#fed346ff; color: white;"
+																		class="btn">Beli Tiket</button>
+																	<button *ngIf="value.amount<=value.jumlahTerjual" type="button" disabled=""
+																		class="btn" style="background-color:#f5eefd;">Soldout</button>
+																</div>
+															</div>
+														</div>
+														<br><hr class="style-one" style="height: 1px; background-color: white;"><br>
+													</div>
+												</div>
+											</div>
+										</div>
+										<br><br>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="myModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<button type="button" class="close" id="close" data-dismiss="modal" (click)="toggleModel()"
+						  [class.active]="!showModelPanel">×</button>
+			</div>
+			<!-- Modal body -->
+			<div class="modal-body">
+				<img style="max-width: 100%;" src="assets/bg-img/layout.jpg"
+					  allowtransparency="true" allowfullscreen="true" frameborder="0" height="1347"
+					  style="background: white; width: calc(100% - 2px); border-radius: 3px; border: 1px solid rgb(219, 219, 219); box-shadow: none; display: block; margin: 0px 0px 12px; padding: 0px;">
+
+			</div>
+		</div>
+	</div>
+	<cmp-footer></cmp-footer>
+</body>
+
+</html>

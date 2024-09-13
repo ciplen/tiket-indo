@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<div mat-dialog-content>
+	<i *ngIf="data.type == 0" class="icon-info-circled text-primary"></i>
+	<i *ngIf="data.type == 1" class="icon-attention text-warning"></i>
+	<i *ngIf="data.type == 2" class="icon-block text-danger"></i>
+	<p [innerHtml]="data.content"></p>
+</div>
+<div mat-dialog-actions>
+  <button (click)="close('yes')" cdkFocusInitial  class="btn btn-default mr-2">{{data.yesLabel}}</button>
+  <button *ngIf="data.noLabel" (click)="close('no')"  class="btn btn-default mr-2">{{data.noLabel}}</button>
+  <button *ngIf="data.cancelLabel" (click)="close('cancel')"  class="btn btn-default">{{data.cancelLabel}}</button>
+</div>

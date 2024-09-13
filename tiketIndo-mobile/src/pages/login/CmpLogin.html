@@ -1,0 +1,22 @@
+<ion-content [ngSwitch]="mode" class="login-container">
+	<div padding *ngSwitchCase="'login'">
+		  <ion-img class="logo"	src="assets/imgs/logo_blue.png"></ion-img><br>
+		<form (ngSubmit)="login()" [formGroup]="loginForm">
+			<ion-list>				
+				<ion-item padding-right>
+					<ion-label>
+						<ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+					</ion-label>
+					<ion-input [(ngModel)]="username" formControlName="username" placeholder="Username *"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label>
+						<ion-icon ios="ios-unlock" md="md-unlock"></ion-icon>
+					</ion-label>
+					<ion-input [(ngModel)]="password" formControlName="password" type="password" placeholder="Password *"></ion-input>
+				</ion-item>
+			</ion-list>
+			<button type="submit" ion-button block [disabled]="loginForm.invalid">Masuk</button>
+		</form>
+	</div>
+</ion-content>

@@ -1,0 +1,47 @@
+<div class="ribbon">
+	<div class="page-title">{{'utility' | translate}}</div>
+</div>
+<div class="card mb-3">
+	<div class="card-header">{{'request.indicator' | translate}}</div>
+	<div class='card-body'>
+		<button *ngIf="requestIndicatorClicked == false" (click)="showRequestIndicator()">{{'show' | translate}}</button>
+		<button *ngIf="requestIndicatorClicked == true" (click)="hideRequestIndicator()">{{'hide' | translate}}</button>
+	</div>
+</div>
+<div class="card mb-3">
+	<div class="card-header">{{'alert.controller' | translate}}</div>
+	<div class='card-body'>
+		<button class="mr-2" *ngIf="alertSuccessClicked == false"
+			(click)="showAlertSuccess()">{{'show.alert.success' | translate}}</button>
+		<button class="mr-2" *ngIf="alertSuccessClicked == true"
+			(click)="hideAlertSuccess()">{{'hide.alert.success' | translate}}</button>
+		<button class="mr-2" *ngIf="alertDangerClicked == false"
+			(click)="showAlertDanger()">{{'show.alert.danger' | translate}}</button>
+		<button class="mr-2" *ngIf="alertDangerClicked == true"
+			(click)="hideAlertDanger()">{{'hide.alert.danger' | translate}}</button>
+		<button class="mr-2" *ngIf="alertWarningClicked == false"
+			(click)="showAlertWarning()">{{'show.alert.warning' | translate}}</button>
+		<button class="mr-2" *ngIf="alertWarningClicked == true"
+			(click)="hideAlertWarning()">{{'hide.alert.warning' | translate}}</button>
+		<button *ngIf="alertInfoClicked == false" (click)="showAlertInfo()">{{'show.alert.info' | translate}}</button>
+		<button *ngIf="alertInfoClicked == true" (click)="hideAlertInfo()">{{'hide.alert.info' | translate}}</button>
+	</div>
+</div>
+<div class="row mb-3">
+	<div class="card mr-1">
+		<div class="card-header">{{'error.handling' | translate}}</div>
+		<div class='card-body'>
+			<button class="mr-2" (click)="errorNoParam()">{{'error.no.param' | translate}}</button>
+			<button (click)="errorWithParam()">{{'error.with.param' | translate}}</button>
+		</div>
+	</div>
+	<div class="card ml-1">
+		<div class="card-header">{{'error.handling' | translate}}</div>
+		<div class='card-body grid-container'>
+			<button class="btn btn-default col1" (click)="showDialogInfo()">{{'show.info.dialog' | translate}}</button>
+			<button class="btn btn-default col2" (click)="showDialogConfirm()">{{'show.confirmation.dialog' | translate}}</button>
+			<button class="btn btn-default col3" (click)="showDialogError()">{{'show.error.dialog' | translate}}</button>
+			<button class="btn btn-default col4" (click)="showDialogCustom()">{{'show.custom.dialog' | translate}}</button>
+		</div>
+	</div>
+</div>

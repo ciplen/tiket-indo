@@ -1,0 +1,83 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Buy Ticket - TiketIndo</title>
+
+		<style>
+			.font-logo-header {
+				font-family: "Allura", cursive;
+				color: white;
+				font-size: 50px;
+				margin-top: 12px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="Scroll" (scroll)="onWindowScroll($event);" class="header-area">
+			<div class="musica-main-menu">
+				<div class="classy-nav-container breakpoint-off">
+					<div class="container-fluid">
+						<nav class="classy-navbar navbar navbar-expand-lg fixed-top custom-nav sticky stickyadd">
+							<div class="container">
+								<!-- LOGO -->
+								<a class="logo navbar-brand" href="index.html">
+									<img src="assets/tiketindo2.png" alt="" class="img-fluid logo-light"> 
+									<img style="max-width: 260px;" src="assets/tiketindo2.png" alt="" class="powered-img img-fluid logo-dark">
+								</a>
+								<div class="classy-navbar-toggler">
+									<span class="navbarToggler" (click)="toggleProfilePanel()"
+											[class.active]="showProfilePanel"><span style="color: white"></span><span></span><span></span></span>
+								</div>
+								<div class="classy-menu">
+									<div id="myLinks">
+										<!-- close btn -->
+										<div class="classy-menu breakpoint-on" style="margin-right: 1px;">
+											<ul>
+												<li><a href="https://www.instagram.com/inspro01/?hl=id" target="blank_space">Tentang Kami</a></li>
+												<li><a href="https://tiketindonesia.id/news/" target="blank_space">Berita</a></li>
+												<li><a href="https://www.instagram.com/etnichestra/?igshid=zdc5n96v4dp1" target="blank_space">Hubungi Kami</a></li>
+											</ul>
+											<br><br>
+											<h4 class="powered">Powered by:</h4>
+											<div class="center-img">
+												<a href="" routerLinkActive="router-link-active">
+													<img class="powered-img"
+														  src="assets/bg-img/inspro.png" alt="">
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="collapse navbar-collapse" id="navbarCollapse">
+									<ul class="navbar-nav mx-auto navbar-center" id="mySidenav">
+										<li class="nav-item">
+											<a [routerLink]="['/']" routerLinkActive="router-link-active" class="nav-link">Beranda</a>
+										</li>
+										<li class="nav-item">
+											<a href="https://www.instagram.com/inspro01/?hl=id" target="blank_space" class="nav-link">Tentang Kami</a>
+										</li>
+										<li class="nav-item">
+											<a href="https://tiketindonesia.id/news/" target="blank_space" class="nav-link">Berita</a>
+										</li>
+									</ul>
+									<a class="logo navbar-brand second-img" href="index.html">
+										<img src="assets/tiketindo2.png" alt="" class="img-fluid logo-light"> 
+										<img style="max-width: 100px; margin-right: 50px;" src="assets/bg-img/inspro.png" alt="" class="img-fluid logo-dark">
+
+										<img src="assets/tiketindo2.png" alt="" class="img-fluid logo-light"> 
+										<!--<img style="max-width: 100px; margin-right: -15px;" src="assets/panemu.png" alt="" class="img-fluid logo-dark">-->
+									</a>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+
+	</body>
+
+</html>
